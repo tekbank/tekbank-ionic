@@ -29,6 +29,7 @@ export class MyApp {
   }
 
   openPage(page:string) {
-    this.nav.setRoot(page);
+    //HomePage is not lazy loaded therefore component must be specified
+    page === 'Home' ? this.nav.setRoot(HomePage) : this.nav.setRoot(page);
   }
 }
