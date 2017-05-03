@@ -1,3 +1,4 @@
+
 import { NavButtons } from './../components/nav-buttons/nav-buttons';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     MyApp,
     HomePage,
-    NavButtons
+    NavButtons,
+    
   ],
   imports: [
     BrowserModule,

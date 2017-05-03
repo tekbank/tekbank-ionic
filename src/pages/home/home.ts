@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  goToRegisterPage() {
+    this.navCtrl.push('Register');
+  }
+
 }
