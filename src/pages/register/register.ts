@@ -9,12 +9,12 @@ import { NgForm } from "@angular/forms";
 })
 export class Register {
 
-  user: { username?: string, password?: string } = {};
+  user = {} as { firstName: string, lastName: string, email: string, phone: string, password?: string, confirmPassword?: string };
   submitted = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad Register');
   }
@@ -26,7 +26,7 @@ export class Register {
       this.navCtrl.push('Welcome');
     }
   }
-  goToLogin(){
+  goToLogin() {
     this.navCtrl.push('Login');
   }
 

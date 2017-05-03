@@ -11,14 +11,43 @@
 
   <form #registerForm="ngForm" novalidate>
     <ion-list>
+
       <ion-item>
-        <ion-label stacked color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="user.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+        <ion-label stacked color="primary">First Name</ion-label>
+        <ion-input [(ngModel)]="user.firstName" name="firstName" type="text" #firstName="ngModel" spellcheck="false" autocapitalize="off"
           required>
         </ion-input>
       </ion-item>
-      <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-        Username is required
+      <p ion-text [hidden]="firstName.valid || submitted == false" color="danger" padding-left>
+        First name is required
+      </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Last Name</ion-label>
+        <ion-input [(ngModel)]="user.lastName" name="lastName" type="text" #lastName="ngModel" spellcheck="false" autocapitalize="off"
+          required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="lastName.valid || submitted == false" color="danger" padding-left>
+        Last name is required
+      </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="user.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+        Email is required
+      </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Phone</ion-label>
+        <ion-input [(ngModel)]="user.phone" name="phone" type="text" #phone="ngModel" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="phone.valid || submitted == false" color="danger" padding-left>
+        Phone is required
       </p>
 
       <ion-item>
@@ -29,13 +58,24 @@
       <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
         Password is required
       </p>
+
+      <ion-item>
+        <ion-label stacked color="primary">Confirm Password</ion-label>
+        <ion-input [(ngModel)]="user.confirmPassword" name="confirmPassword" type="confirmPassword" #confirmPassword="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="confirmPassword.valid || submitted == false" color="danger" padding-left>
+        Confirm Password is required
+      </p>
     </ion-list>
 
     <div padding fxLayout="column" fxLayoutAlign="center center">
       <button ion-button padding (click)="register(registerForm)" type="submit" block>Create your TekBank account</button>
-      <div><p>
-        Already have an account ? <a (click)="goToLogin()" block>Login</a>
-      </p></div>
+      <div>
+        <p>
+          Already have an account ? <a (click)="goToLogin()" block>Login</a>
+        </p>
+      </div>
     </div>
 
   </form>
