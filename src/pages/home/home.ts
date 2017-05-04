@@ -1,8 +1,11 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import * as fromRoot from './../../app/reducers';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../app/reducers';
+import * as auth from './../../app/actions/auth.action';
+
 import { Observable } from "rxjs/Observable";
 
 @Component({
@@ -10,13 +13,15 @@ import { Observable } from "rxjs/Observable";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  
   isLoggedIn$: Observable<boolean>;
 
   constructor(
     public navCtrl: NavController,
     private store: Store<fromRoot.State>) {
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
+  }
+
+  ionViewDidLoad() {
   }
 
   goToRegisterPage() {
@@ -28,9 +33,7 @@ export class HomePage {
   }
 
   logOff(){
-    //this.store.dispatch(new LogOff());
-    this.navCtrl.setRoot('Home');
-    console.log('asdf');
+    this.store.dispatch(new auth.LogoffAction())
   }
 
 }

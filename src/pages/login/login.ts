@@ -1,11 +1,11 @@
 import { HomePage } from './../home/home';
 import { LoginDetail } from './../../app/models/login';
 
-import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { NgForm } from "@angular/forms";
 
+import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app/reducers';
 import * as auth from './../../app/actions/auth.action';
 import { Subscription } from "rxjs/Subscription";
