@@ -10,6 +10,10 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { reducer } from './reducers/index';
+import { StoreModule } from "@ngrx/store";
 
 @NgModule({
   declarations: [
@@ -22,6 +26,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FlexLayoutModule,
+    StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

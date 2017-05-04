@@ -7,13 +7,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="page-home" >
-  <div fxFlex fxLayout="column"  fxLayoutAlign="space-between">    
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <h1>Welcome to TekBank</h1>
-        <button ion-button primary full (click)="goToRegisterPage()" >Register</button>
+<ion-content padding class="page-home">
+  <div fxFlex fxLayout="column" fxLayoutAlign="space-between">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <h1>Welcome to TekBank</h1>
+      <div *ngIf="(isLoggedIn$ | async) === false">
+        <button ion-button primary full (click)="goToRegisterPage()">Register</button>
         <button ion-button primary full (click)="goToLoginPage()">Log on</button>
       </div>
-      <nav-buttons></nav-buttons>
+      <div *ngIf="isLoggedIn$ | async">
+        <button ion-button primary full (click)="logOff()">Log off</button>
+      </div>
+    </div>
+    <nav-buttons></nav-buttons>
   </div>
 </ion-content>
