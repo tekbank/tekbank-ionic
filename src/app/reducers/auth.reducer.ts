@@ -1,4 +1,3 @@
-import { LOGOFF } from './../actions/auth.action';
 import { LoginResult } from './../models/login';
 import { User } from './../models';
 import * as auth from '../actions/auth.action';
@@ -26,6 +25,14 @@ export function reducer(state = initialState, action: auth.Actions): State {
             return state = {
                 isLoggedIn: false,
                 user: null
+            }
+        }
+        case auth.REGISTER_SUCCESS_ACTION: {
+            debugger;
+            const registerResult = action.payload as LoginResult;
+            return state = {
+                isLoggedIn: registerResult.success,
+                user: registerResult.user
             }
         }
     }

@@ -19,6 +19,15 @@ export class AuthEffects {
         .map(data => new auth.LoginSuccessAction(data));
     //.catch(() => of(new error.HandleErrorAction([]))); //TODO: Implement error handler
 
+@Effect()
+    register$: Observable<Action> = this.actions$
+        .ofType(auth.REGISTER)
+        .map(toPayload)
+        .switchMap(registerDetails => this.authService.register(registerDetails))
+        .map(data => new auth.RegisterSuccessAction(data));
+    //.catch(() => of(new error.HandleErrorAction([]))); //TODO: Implement error handler
+
+
     constructor(
         private actions$: Actions,
         private authService: AuthService) { }

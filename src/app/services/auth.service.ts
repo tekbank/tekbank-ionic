@@ -1,4 +1,4 @@
-import { LoginDetail, LoginResult } from './../models';
+import { LoginDetail, LoginResult, RegisterDetail, RegisterResult } from './../models';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -12,5 +12,17 @@ export class AuthService {
         else {
             return Observable.of({ success: false, message: "Invalid username or password" });
         }
-    }
+    };
+
+    register(registerDetail: RegisterDetail): Observable<RegisterResult> {
+        return Observable.of(
+            {
+                success: true,
+                user: { 
+                        firstName: registerDetail.firstName,
+                        lastName: registerDetail.lastName,
+                        email: registerDetail.email,
+                     }
+            } as RegisterResult);
+    };
 }

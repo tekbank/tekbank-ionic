@@ -33,7 +33,7 @@ export class HomePage {
   }
 
   logOff(){
-    this.store.dispatch(new auth.LogoffAction())
+    this.store.dispatch(new auth.LogoffAction());
   }
 
 }

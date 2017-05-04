@@ -4,11 +4,11 @@ import { LoginDetail } from './../../app/models/login';
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { NgForm } from "@angular/forms";
+import { Subscription } from "rxjs/Subscription";
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app/reducers';
 import * as auth from './../../app/actions/auth.action';
-import { Subscription } from "rxjs/Subscription";
 
 @IonicPage()
 @Component({
@@ -20,7 +20,10 @@ export class Login {
   loginDetail = { userName: '', password: '' } as LoginDetail;
   submitted = false;
 
-  constructor(public navCtrl: NavController, private store: Store<fromRoot.State>) { }
+  constructor(
+    public navCtrl: NavController,
+    private store: Store<fromRoot.State>,
+  ) { }
 
   ionViewDidLoad() {
     this.checkLogin();

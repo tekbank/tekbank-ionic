@@ -46,6 +46,6 @@ export class MyApp {
     page === 'Home' ? this.nav.setRoot(HomePage) : this.nav.setRoot(page);
   }
   logOut() {
-
+    this.store.dispatch(new auth.LogoffAction());
   }
 }
