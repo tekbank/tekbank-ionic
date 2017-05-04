@@ -12,7 +12,7 @@
     <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!(isLoggedIn$ | async)">
       <h1>Welcome to TekBank</h1>
       <button ion-button primary full (click)="goToRegisterPage()">Register</button>
-      <button ion-button primary full (click)="goToLoginPage()">Log on</button>
+      <button ion-button primary full (click)="goToLoginPage()">Log in</button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoggedIn$ | async">
       <h1>Welcome to TekBank</h1>

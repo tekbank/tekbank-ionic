@@ -1,6 +1,12 @@
+import { LoginDetail } from './../../app/models/login';
+
+import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { NgForm } from "@angular/forms";
+
+import * as fromRoot from '../../app/reducers';
+import * as auth from './../../app/actions/auth.action'; 
 
 @IonicPage()
 @Component({
@@ -9,22 +15,22 @@ import { NgForm } from "@angular/forms";
 })
 export class Login {
 
-  user: { username?: string, password?: string } = {};
+  loginDetail = { userName:'',password:''} as LoginDetail;
   submitted = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private store: Store<fromRoot.State>) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
   }
-  test(){}
+  
   login(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
-      //this.userData.login(this.login.username);
-      this.navCtrl.push('Welcome');
+      this.store.dispatch(new auth.LoginAction(this.loginDetail as LoginDetail))
+      //this.navCtrl.push('Welcome');
     }
   }
 

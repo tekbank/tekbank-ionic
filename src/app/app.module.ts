@@ -1,3 +1,5 @@
+import { AuthEffects } from './effects/auth.effects';
+import './core/rxjs-extensions';
 
 import { NavButtons } from './../components/nav-buttons/nav-buttons';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,8 +14,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AuthService } from './services/auth.service';
+
 import { reducer } from './reducers/index';
 import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import { StoreModule } from "@ngrx/store";
     FlexLayoutModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    EffectsModule.run(AuthEffects)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +43,8 @@ import { StoreModule } from "@ngrx/store";
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthService
   ]
 })
 export class AppModule { }
