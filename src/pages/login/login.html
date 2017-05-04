@@ -12,12 +12,12 @@
     <ion-list>
       <ion-item>
         <ion-label stacked color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="loginDetail.userName" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+        <ion-input [(ngModel)]="loginDetail.userName" name="userName" type="text" #userName="ngModel" spellcheck="false" autocapitalize="off"
           required>
         </ion-input>
       </ion-item>
-      <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-        Username is required
+      <p ion-text [hidden]="userName.valid || submitted == false" color="danger" padding-left>
+        User Name is required
       </p>
 
       <ion-item>
