@@ -1,4 +1,4 @@
-import { User, AccountsSummary, AccountDetails } from './../models';
+import { User, AccountsSummary } from './../models';
 import { Action } from '@ngrx/store';
 
 export const LOAD = '[AccountsSummary] Load';
@@ -10,7 +10,6 @@ export class LoadAction implements Action {
 
 export class LoadSuccessAction implements Action {
   readonly type = LOAD_SUCCESS;
-
   constructor(public payload: AccountsSummary) { }
 }
 
