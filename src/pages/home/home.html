@@ -8,16 +8,26 @@
 </ion-header>
 
 <ion-content padding class="page-home">
-  <div fxFlex fxLayout="column" fxLayoutAlign="space-between">
-    <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!(isLoggedIn$ | async)">
-      <h1>Welcome to TekBank</h1>
-      <button ion-button primary full (click)="goToRegisterPage()">Register</button>
-      <button ion-button primary full (click)="goToLoginPage()">Log in</button>
-    </div>
-    <div fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoggedIn$ | async">
-      <h1>Welcome to TekBank</h1>
-      <button ion-button primary full (click)="logOff()">Log off</button>
-    </div>
-    <nav-buttons></nav-buttons>
+  <div fxLayout="column" fxFlex="auto" fxFlex="100">
+    <ion-slides pager="true" fxFlex="auto" fxFlex="70">
+      <ion-slide>
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!(isLoggedIn$ | async)">
+          <h1>Welcome to TekBank</h1>
+          <button ion-button primary full (click)="goToRegisterPage()">Register</button>
+          <button ion-button primary full (click)="goToLoginPage()">Log in</button>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" *ngIf="isLoggedIn$ | async">
+          <h1>Welcome to TekBank</h1>
+          <button ion-button primary full (click)="logOff()">Log off</button>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <h2>Slide 2</h2>
+      </ion-slide>
+      <ion-slide>
+        <h2>Slide 3</h2>
+      </ion-slide>
+    </ion-slides>
+    <nav-buttons fxFlex="auto" fxFlex="30"></nav-buttons>
   </div>
 </ion-content>

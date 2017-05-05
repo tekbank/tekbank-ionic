@@ -10,7 +10,7 @@
 <ion-content>
   <form [formGroup]="loginForm" novalidate>
     <ion-list>
-        <p ion-text color="danger" *ngIf="authMessage$ | async as authMessage" padding-left>{{authMessage.message}}</p>
+        <p ion-text color="danger" *ngIf="authMessage$ | async as authMessage" padding-left>{{authMessage}}</p>
       <ion-item>
         <ion-label stacked color="primary">Username</ion-label>
         <ion-input type="text" formControlName="userName" spellcheck="false" autocapitalize="off">
