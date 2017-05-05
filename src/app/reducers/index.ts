@@ -5,13 +5,16 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { combineReducers } from '@ngrx/store';
 
 import * as fromAuth from './auth.reducer';
+import * as fromAccountsSummary from './accountsSummary.reducer';
 
 export interface State {
     auth: fromAuth.State;
+    accountsSummary: fromAccountsSummary.State;
 }
 
 const reducers = {
     auth: fromAuth.reducer,
+    AccountsSummary: fromAccountsSummary.reducer
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);

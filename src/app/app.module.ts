@@ -19,13 +19,14 @@ import { AuthService } from './services/auth.service';
 import { reducer } from './reducers/index';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
+import { Accounts } from "../pages/accounts/accounts";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NavButtons,
-    
+    Accounts
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ import { EffectsModule } from "@ngrx/effects";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    Accounts
   ],
   providers: [
     StatusBar,

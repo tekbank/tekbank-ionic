@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Accounts } from "../../pages/accounts/accounts";
 
 /**
  * Generated class for the NavButtons component.
@@ -13,6 +14,7 @@ import { Component } from '@angular/core';
 export class NavButtons {
 
   text: string;
+  accountsPage: Accounts;
 
   constructor() {
     console.log('Hello NavButtons Component');
