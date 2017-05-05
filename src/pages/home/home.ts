@@ -1,4 +1,3 @@
-import { Subscription } from 'rxjs/Subscription';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -21,8 +20,7 @@ export class HomePage {
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
   }
 
-  ionViewDidLoad() {
-  }
+  ionViewDidLoad() { }
 
   goToRegisterPage() {
     this.navCtrl.push('Register');
@@ -32,7 +30,7 @@ export class HomePage {
     this.navCtrl.push('Login');
   }
 
-  logOff(){
+  logOff() {
     this.store.dispatch(new auth.LogoffAction());
   }
 
