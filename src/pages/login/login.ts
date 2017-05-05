@@ -26,8 +26,7 @@ export class Login {
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavController,
-    private store: Store<fromRoot.State>,
-    public toastCtrl: ToastController) {
+    private store: Store<fromRoot.State>) {
     this.authMessage$ = this.store.select(fromRoot.getAuthMessage);
     this.buildForm();
   }
@@ -43,8 +42,7 @@ export class Login {
     });
   }
 
-  login(form: NgForm) {
-    console.log(this.loginForm.value);
+  login() {
     this.store.dispatch(new auth.LoginAction(this.loginForm.value as LoginDetail))
   }
 
