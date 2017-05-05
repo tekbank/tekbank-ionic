@@ -23,3 +23,4 @@ export function reducer(state: any, action: any) {
 
 export const getAuthState = (state: State) => state.auth;
 export const getAuthIsLoggedIn = createSelector(getAuthState, fromAuth.getLoggedIn);
+export const getAuthMessage = createSelector(getAuthState, fromAuth.getMessage);
