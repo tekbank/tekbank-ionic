@@ -26,6 +26,8 @@ export class NavButtons {
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
   }
 
+  //todo: investigate why ngonit works but onViewDidLoad doesn't 
+  //as per https://forum.ionicframework.com/t/ionviewdidload-in-component/69211
   ngOnInit() {
     this.subscribeToLogin();
   }
