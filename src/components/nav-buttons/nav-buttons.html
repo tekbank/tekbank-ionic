@@ -5,7 +5,7 @@
       <button ion-button fxFlex="33" secondary>BPAY</button>
     </div>
     <div fxFlexLayout="row nowrap" fxLayoutAlign="center center">
-      <button ion-button fxFlex="33" [navPush]="accountsPage" secondary>View accounts</button>
+      <button ion-button fxFlex="33" (click)="goToAccountsPage()" secondary>View accounts</button>
       <button ion-button fxFlex="33" secondary>Cards</button>
       <button ion-button fxFlex="33" secondary>Products</button>
     </div>

@@ -29,7 +29,6 @@ export class AccountService {
 
         return Observable.of(
             {
-                userId: null,
                 accounts: this.intialAccounts(),
                 totalCredits: 0,
                 totalDebits: 0,

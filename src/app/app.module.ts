@@ -19,14 +19,13 @@ import { AuthService } from './services/auth.service';
 import { reducer } from './reducers/index';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-import { Accounts } from "../pages/accounts/accounts";
+//import { Accounts } from "../pages/accounts/accounts";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NavButtons,
-    Accounts
   ],
   imports: [
     BrowserModule,
@@ -40,7 +39,6 @@ import { Accounts } from "../pages/accounts/accounts";
   entryComponents: [
     MyApp,
     HomePage,
-    Accounts
   ],
   providers: [
     StatusBar,

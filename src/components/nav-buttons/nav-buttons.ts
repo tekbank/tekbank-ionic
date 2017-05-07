@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Accounts } from "../../pages/accounts/accounts";
+import { NavController } from "ionic-angular";
 
 /**
  * Generated class for the NavButtons component.
@@ -16,9 +17,16 @@ export class NavButtons {
   text: string;
   accountsPage: Accounts;
 
-  constructor() {
+  constructor(
+    public navCtrl: NavController,
+  ) {
     console.log('Hello NavButtons Component');
     this.text = 'Hello World';
+  }
+
+  goToAccountsPage(){
+    console.log('goto Accounts');
+    this.navCtrl.push('Accounts');
   }
 
 }

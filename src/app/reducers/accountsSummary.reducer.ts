@@ -1,9 +1,9 @@
 import * as accountsSummary from '../actions/accountsSummary.action';
-import { AccountsSummary, AccountDetails, TransactionDetails, AccountSummary } from './../models';
+import { AccountsSummary, Account, Transaction } from './../models';
 
 export interface State {
     userId: null,
-    accounts: AccountSummary;
+    accounts: Account;
     totalCredits: number;
     totalDebits: number;
     netPosition: number;
