@@ -2,31 +2,47 @@ import { Component } from '@angular/core';
 import { Accounts } from "../../pages/accounts/accounts";
 import { NavController } from "ionic-angular";
 
-/**
- * Generated class for the NavButtons component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../app/reducers';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
 @Component({
   selector: 'nav-buttons',
   templateUrl: 'nav-buttons.html'
 })
 export class NavButtons {
+  isLoggedIn: boolean;
+  isLoggedIn$: Observable<boolean>;
+  subscriptions = [] as Subscription[];
 
   text: string;
   accountsPage: Accounts;
 
   constructor(
     public navCtrl: NavController,
+    private store: Store<fromRoot.State>
   ) {
-    console.log('Hello NavButtons Component');
-    this.text = 'Hello World';
+    this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
   }
 
-  goToAccountsPage(){
-    console.log('goto Accounts');
-    this.navCtrl.push('Accounts');
+  ngOnInit() {
+    this.subscribeToLogin();
   }
 
+  subscribeToLogin() {
+    this.subscriptions.push(this.store.select(fromRoot.getAuthIsLoggedIn)
+      .subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn)
+    );
+  }
+
+  goToAccountsPage() {
+    if (this.isLoggedIn) {
+      this.navCtrl.push('Accounts');
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
 }
