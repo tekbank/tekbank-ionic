@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the Accounts page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { Store } from '@ngrx/store';
+import { Observable } from "rxjs/Observable";
+import * as fromRoot from '../../app/reducers';
+import * as accounts from './../../app/actions/accountsSummary.action';
+import { AccountsSummary } from "../../app/models/index";
+
+
 @IonicPage()
 @Component({
   selector: 'page-accounts',
@@ -14,11 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Accounts {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  accountsSummary$: Observable<AccountsSummary>;
+
+  constructor(
+    public navCtrl: NavController,
+    private store: Store<fromRoot.State>) {
+    this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Accounts');
+    this.store.dispatch(new accounts.LoadAction())
+
   }
 
 }

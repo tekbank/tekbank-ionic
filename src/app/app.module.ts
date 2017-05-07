@@ -1,4 +1,5 @@
 import { AuthEffects } from './effects/auth.effects';
+import { AccountEffects } from './effects/accountsSummary.effects';
 import './core/rxjs-extensions';
 
 import { NavButtons } from './../components/nav-buttons/nav-buttons';
@@ -20,6 +21,7 @@ import { reducer } from './reducers/index';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 //import { Accounts } from "../pages/accounts/accounts";
+import { AccountService } from './services/account.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { EffectsModule } from "@ngrx/effects";
     FlexLayoutModule,
     StoreModule.provideStore(reducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
-    EffectsModule.run(AuthEffects)
+    EffectsModule.run(AuthEffects),
+    EffectsModule.run(AccountEffects),
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +48,8 @@ import { EffectsModule } from "@ngrx/effects";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthService
+    AuthService,
+    AccountService 
   ]
 })
 export class AppModule { }

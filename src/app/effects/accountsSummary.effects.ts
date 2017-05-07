@@ -14,6 +14,7 @@ export class AccountEffects {
     @Effect()
     loadAccountsSummary$: Observable<Action> = this.actions$
         .ofType(accountsSummary.LOAD)
+        .do(() =>console.log('effect load account'))
         .switchMap(() => this.accountService.retrieveAccountsSummary())
         .map(data => new accountsSummary.LoadSuccessAction(data));
     //.catch(() => of(new error.HandleErrorAction([]))); /i/TODO: Implement error handler

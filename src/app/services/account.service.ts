@@ -21,18 +21,18 @@ export class AccountService {
                 accountNumber: '3456 4567 0980 2342', accountName: 'MasterCard Master',
                 creditAmount: 1000, debitAmount: 5000,
                 balanceAmount: 5000, availableAmount: 1500
-            }
+            },
         ]
     }
 
     retrieveAccountsSummary(): Observable<AccountsSummary> {
-
+        console.log('retrieve accounts');
         return Observable.of(
             {
                 accounts: this.intialAccounts(),
-                totalCredits: 0,
-                totalDebits: 0,
-                netPosition: 0,
+                totalCredits: 28000,
+                totalDebits: 7000,
+                netPosition: 21000,
             } as AccountsSummary
         );
 

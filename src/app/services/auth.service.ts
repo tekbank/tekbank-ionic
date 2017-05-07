@@ -15,6 +15,7 @@ export class AuthService {
     };
 
     register(registerDetail: RegisterDetail): Observable<RegisterResult> {
+        
         return Observable.of(
             {
                 success: true,

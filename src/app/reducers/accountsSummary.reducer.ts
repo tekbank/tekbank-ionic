@@ -1,16 +1,16 @@
 import * as accountsSummary from '../actions/accountsSummary.action';
 import { AccountsSummary, Account, Transaction } from './../models';
+import { Observable } from 'rxjs/Observable';
+
 
 export interface State {
-    userId: null,
-    accounts: Account;
+    accounts: Account[];
     totalCredits: number;
     totalDebits: number;
     netPosition: number;
 };
 
 const initialState: State = {
-    userId: null,
     accounts: null,
     totalCredits: 0,
     totalDebits: 0,
@@ -20,17 +20,11 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: accountsSummary.Actions): State {
     switch (action.type) {
-        case accountsSummary.LOAD_SUCCESS: 
-            // const accountsSummary = action.payload as AccountsSummary;
-            return state = {
-                userId: null,
-                accounts: action.payload as any,
-                totalCredits: 0,
-                totalDebits: 0,
-                netPosition: 0,
-            }
-        default: 
+        case accountsSummary.LOAD_SUCCESS:
+            return state = action.payload as AccountsSummary;
+        default:
             return state;
     }
 }
 
+export const getAccountsSummary = (state: State) => state;
