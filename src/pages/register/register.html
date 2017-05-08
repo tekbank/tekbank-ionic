@@ -37,20 +37,20 @@
 
       <ion-item>
         <ion-label stacked color="primary">Password</ion-label>
-        <ion-input type="text" formControlName="password"></ion-input>
+        <ion-input type="text" type="password" formControlName="password"></ion-input>
       </ion-item>
       <p padding-left ion-text *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched" color="danger">Password is required</p>
 
       <ion-item>
         <ion-label stacked color="primary">Confirm Password</ion-label>
-        <ion-input type="text" formControlName="confirmPassword"></ion-input>
+        <ion-input type="text" type="password" formControlName="confirmPassword"></ion-input>
       </ion-item>
       <p padding-left ion-text *ngIf="registerForm.get('confirmPassword').hasError('required') && registerForm.get('confirmPassword').touched" color="danger">Confirm Password is required</p>
-      <p padding-left *ngIf="registerForm.get('confirmPassword').hasError('equalTo')">Password and confirm password need to match</p>
+      <p padding-left ion-text *ngIf="registerForm.get('confirmPassword').hasError('equalTo')"  color="danger">Password and confirm password need to match</p>
     </ion-list>
 
     <div padding fxLayout="column" fxLayoutAlign="center center">
-      <button ion-button padding (click)="register()" type="submit" block>Create your TekBank account</button>
+      <button ion-button padding [disabled]="!registerForm.valid" (click)="register()" type="submit" block>Create your TekBank account</button>
       <div>
         <p>Already have an account ? <a (click)="goToLogin()" block>Login</a></p>
       </div>
