@@ -1,11 +1,10 @@
-
-    <div fxFlexLayout="row" fxLayoutAlign="center center">
-      <button ion-button fxFlex="33" secondary>Transfer</button>
-      <button ion-button fxFlex="33" secondary>Pay someone</button>
-      <button ion-button fxFlex="33" secondary>BPAY</button>
+    <div  fxFlexLayout="row" fxLayoutAlign="center center">
+      <button ion-button fxFlex="33" class="navbutton" (click)="goToAccountsPage()" secondary>Accounts</button>
+      <button ion-button fxFlex="33" class="navbutton" secondary>Pay anyone</button>
+      <button ion-button fxFlex="33" class="navbutton" secondary>BPAY</button>
     </div>
     <div fxFlexLayout="row nowrap" fxLayoutAlign="center center">
-      <button ion-button fxFlex="33" (click)="goToAccountsPage()" secondary>View accounts</button>
-      <button ion-button fxFlex="33" secondary>Cards</button>
-      <button ion-button fxFlex="33" secondary>Products</button>
+      <button ion-button fxFlex="33" class="navbutton" secondary>Transfer</button>
+      <button ion-button fxFlex="33" class="navbutton" secondary>Cards</button>
+      <button ion-button fxFlex="33" class="navbutton" secondary>Products</button>
     </div>
