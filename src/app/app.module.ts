@@ -1,5 +1,5 @@
 import { AuthEffects } from './effects/auth.effects';
-import { AccountEffects } from './effects/accountsSummary.effects';
+import { AccountEffects } from './effects/account.effects';
 import './core/rxjs-extensions';
 
 import { NavButtons } from './../components/nav-buttons/nav-buttons';

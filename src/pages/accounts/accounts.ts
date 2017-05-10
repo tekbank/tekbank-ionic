@@ -4,9 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs/Observable";
 import * as fromRoot from '../../app/reducers';
-import * as accounts from './../../app/actions/accountsSummary.action';
+import * as accounts from './../../app/actions/account.action';
 import { AccountsSummary } from "../../app/models/index";
-
 
 @IonicPage()
 @Component({
@@ -25,8 +24,10 @@ export class Accounts {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Accounts');
-    this.store.dispatch(new accounts.LoadAction())
-
+    this.store.dispatch(new accounts.LoadAccountListAction())
   }
 
+  goToAccountDetail(accountId: string) {
+    this.navCtrl.push('AccountPage', { accountId: accountId });
+  }
 }

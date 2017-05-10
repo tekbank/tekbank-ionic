@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngIf="account$ | async as account">
+    
+      <ion-item>
+        <ion-avatar item-left>
+          <ion-icon name="card"></ion-icon>
+        </ion-avatar>
+        <ion-icon name="more" item-right></ion-icon>
+        <h2> {{account.accountName}}</h2>
+        <p> {{account.accountNumber}}</p>
+      </ion-item>
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-1></ion-col>
+          <ion-col>Available funds</ion-col>
+          <ion-col>{{account.availableAmount}} </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-1></ion-col>
+          <ion-col>Account balance </ion-col>
+          <ion-col>{{account.balanceAmount}}</ion-col>
+        </ion-row>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

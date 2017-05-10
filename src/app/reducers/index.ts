@@ -5,7 +5,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { combineReducers } from '@ngrx/store';
 
 import * as fromAuth from './auth.reducer';
-import * as fromAccounts from './accountsSummary.reducer';
+import * as fromAccounts from './account.reducer';
 
 export interface State {
     auth: fromAuth.State;
@@ -30,3 +30,4 @@ export const getAuthMessage = createSelector(getAuthState, fromAuth.getMessage);
 
 export const getAccountsState = (state: State) => state.accounts;
 export const getAccountsSummary  = createSelector(getAccountsState, fromAccounts.getAccountsSummary);
+export const getAccount  = createSelector(getAccountsState, fromAccounts.getAccount);

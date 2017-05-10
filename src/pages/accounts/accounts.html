@@ -9,13 +9,13 @@
 
 <ion-content padding>
   <div *ngFor="let account of (this.accountsSummary$ | async).accounts">
-    <ion-card>
+    <ion-card (click)="goToAccountDetail(account.accountId)" >
       <ion-item>
         <ion-avatar item-left>
           <ion-icon name="card"></ion-icon>
         </ion-avatar>
         <ion-icon name="more" item-right></ion-icon>
-        <h2>{{account.accountName}}</h2>
+        <h2>  {{account.accountName}}</h2>
         <p> {{account.accountNumber}}</p>
 
       </ion-item>
