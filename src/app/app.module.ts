@@ -22,12 +22,14 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 //import { Accounts } from "../pages/accounts/accounts";
 import { AccountService } from './services/account.service';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NavButtons,
+    
   ],
   imports: [
     BrowserModule,
@@ -42,14 +44,18 @@ import { AccountService } from './services/account.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    HomePage
+  ],
+  exports: [
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthService,
-    AccountService 
+    AccountService ,
+    CurrencyPipe
   ]
 })
 export class AppModule { }

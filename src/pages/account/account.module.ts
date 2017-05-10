@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { AccountPage } from './account';
+import { SharedModule } from './../../app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -8,9 +9,10 @@ import { AccountPage } from './account';
   ],
   imports: [
     IonicPageModule.forChild(AccountPage),
+    SharedModule,
   ],
   exports: [
     AccountPage
   ]
 })
-export class AccountModule {}
+export class AccountModule { }

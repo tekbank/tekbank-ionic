@@ -24,12 +24,12 @@
         <ion-row>
           <ion-col col-1></ion-col>
           <ion-col>Available funds</ion-col>
-          <ion-col>{{account.availableAmount?.amount | currency: account.availableAmount?.currency: true}} </ion-col>
+          <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-1></ion-col>
           <ion-col>Account balance </ion-col>
-          <ion-col>{{account.balanceAmount?.amount | currency: account.balanceAmount?.currency: true}}</ion-col>
+          <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
         </ion-row>
       </ion-card-content>
     </ion-card>
@@ -39,17 +39,17 @@
     <ion-row>
       <ion-col class="totals">
         <h3>Total credits</h3>
-        <h2>{{accountsSummary.totalCredits?.amount | currency: accountsSummary.totalCredits?.currency: true}}</h2>
+        <h2>{{accountsSummary.totalCredits| tkbcurrency}}</h2>
       </ion-col>
       <ion-col background-color="red">
         <h3>Total debits</h3>
-        <h2>{{accountsSummary.totalDebits?.amount | currency: accountsSummary.totalDebits?.currency: true}}</h2>
+        <h2>{{accountsSummary.totalDebits| tkbcurrency}}</h2>
       </ion-col>
     </ion-row>
     <ion-row class="totals">
       <ion-col>
         <h3>Net Position</h3>
-        <h2>{{accountsSummary.netPosition?.amount | currency: accountsSummary.netPosition?.currency: true}}</h2>
+        <h2>{{accountsSummary.netPosition| tkbcurrency}}</h2>
       </ion-col>
     </ion-row>
   </ion-card>
