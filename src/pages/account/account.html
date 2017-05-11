@@ -43,22 +43,20 @@
 
 
     <div *ngFor="let transaction of transactions$ | async">
-
-      <ion-row>
-        <ion-col col-8>
-          <p>{{transaction.transactionDate | date:'shortDate'}}</p>
-        </ion-col>
-        <ion-col col-4></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-8>
-          <p>{{transaction.description}}</p>
-        </ion-col>
-        <ion-col col-4>
-          <p class="transaction" *ngIf="transaction.debitAmount">{{transaction.debitAmount | tkbcurrency}}</p>
-          <p class="transaction" *ngIf="transaction.creditAmount">{{transaction.creditAmount | tkbcurrency}}</p>
-        </ion-col>
-      </ion-row>
+      <ion-item-group>
+        <ion-item-divider color="light">{{transaction.transactionDate | date:'shortDate'}}</ion-item-divider>
+        <ion-item>
+          <ion-row>
+            <ion-col col-8>
+              <p>{{transaction.description}}</p>
+            </ion-col>
+            <ion-col col-4>
+              <p class="transaction" *ngIf="transaction.debitAmount">{{transaction.debitAmount | tkbcurrency}}</p>
+              <p class="transaction" *ngIf="transaction.creditAmount">{{transaction.creditAmount | tkbcurrency}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-item-group>
     </div>
   </ion-card>
 </ion-content>
