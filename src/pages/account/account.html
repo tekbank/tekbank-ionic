@@ -1,35 +1,64 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Account</ion-title>
+    <ion-title>Account details</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
   <ion-card *ngIf="account$ | async as account">
-    
-      <ion-item>
-        <ion-avatar item-left>
-          <ion-icon name="card"></ion-icon>
-        </ion-avatar>
-        <ion-icon name="more" item-right></ion-icon>
-        <h2> {{account.accountName}}</h2>
-        <p> {{account.accountNumber}}</p>
-      </ion-item>
-      <ion-card-content>
-        <ion-row>
-          <ion-col col-1></ion-col>
-          <ion-col>Available funds</ion-col>
-          <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-1></ion-col>
-          <ion-col>Account balance </ion-col>
-          <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
-        </ion-row>
-      </ion-card-content>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <ion-icon name="card"></ion-icon>
+      </ion-avatar>
+      <ion-icon name="more" item-right></ion-icon>
+      <h2> {{account.accountName}}</h2>
+      <p> {{account.accountNumber}}</p>
+    </ion-item>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <ion-col>Available funds</ion-col>
+        <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <ion-col>Account balance </ion-col>
+        <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
+      </ion-row>
+    </ion-card-content>
   </ion-card>
   <ion-card>
-    {{transactions$ | async | json}}
+
+    <ion-row>
+      <ion-col col-8></ion-col>
+      <ion-col col-4>
+        <p class="filter">
+          <ion-icon name="funnel"></ion-icon>
+          Filter
+        </p>
+      </ion-col>
+    </ion-row>
+
+
+    <div *ngFor="let transaction of transactions$ | async">
+
+      <ion-row>
+        <ion-col col-8>
+          <p>{{transaction.transactionDate | date:'shortDate'}}</p>
+        </ion-col>
+        <ion-col col-4></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-8>
+          <p>{{transaction.description}}</p>
+        </ion-col>
+        <ion-col col-4>
+          <p class="transaction" *ngIf="transaction.debitAmount">{{transaction.debitAmount | tkbcurrency}}</p>
+          <p class="transaction" *ngIf="transaction.creditAmount">{{transaction.creditAmount | tkbcurrency}}</p>
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-card>
 </ion-content>

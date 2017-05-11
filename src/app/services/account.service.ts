@@ -10,36 +10,36 @@ export class AccountService {
             {
                 userId: '', transactionId: 't1234',
                 accountId: '1111-1111-1111-1111',
-                transactionDateTime: '2017-01-04',
-                reference: 'tref1', description: 'desc',
-                debitAmount: { amount: 4500, currency: 'AUD' },
+                transactionDate: new Date('2017-01-04'), transactionDateTime:new Date('2017-01-04'),
+                reference: 'tref1', description: 'QANTAS Airways Mascot',
+                debitAmount: { amount: 1200, currency: 'AUD' },
                 creditAmount: null,
-                status: TransactionStatus.Pending
+                status: TransactionStatus.Processed
             },
             {
                 userId: '', transactionId: 't1234',
                 accountId: '1111-1111-1111-1111',
-                transactionDateTime: '2017-01-04',
-                reference: 'tref2', description: 'desc',
-                debitAmount: { amount: 4500, currency: 'AUD' },
+                transactionDate: new Date('2017-01-05'), transactionDateTime:new Date('2017-01-05'),
+                reference: 'tref2', description: 'Telstra Direct Debit',
+                debitAmount: { amount: 145.55, currency: 'AUD' },
                 creditAmount: null,
-                status: TransactionStatus.Pending
+                status: TransactionStatus.Processed
             },
             {
                 userId: '', transactionId: 't1234',
                 accountId: '1111-1111-1111-1111',
-                transactionDateTime: '2017-01-04',
-                reference: 'tref3', description: 'desc',
-                debitAmount: { amount: 4500, currency: 'AUD' },
+                transactionDate: new Date('2017-01-06'), transactionDateTime:new Date('2017-01-06'),
+                reference: 'tref3', description: 'Sofitel Gold Coast',
+                debitAmount: { amount: 329, currency: 'AUD' },
                 creditAmount: null,
-                status: TransactionStatus.Pending
+                status: TransactionStatus.Processed
             },
             {
                 userId: '', transactionId: 't1234',
                 accountId: '1111-1111-1111-1111',
-                transactionDateTime: '2017-01-04',
-                reference: 'tref4', description: 'desc',
-                debitAmount: { amount: 4500, currency: 'AUD' },
+                transactionDate: new Date('2017-01-07'), transactionDateTime:new Date('2017-01-07'),
+                reference: 'tref4', description: 'Foxtel Broadband',
+                debitAmount: { amount: 85, currency: 'AUD' },
                 creditAmount: null,
                 status: TransactionStatus.Pending
             },

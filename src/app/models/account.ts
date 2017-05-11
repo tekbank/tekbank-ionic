@@ -23,7 +23,8 @@ export interface Transaction{
     transactionId: string;
     accountId: string;
     userId: string;
-    transactionDateTime: string;
+    transactionDate: Date;
+    transactionDateTime: Date;
     reference: string;
     description: string;
     debitAmount: Amount;

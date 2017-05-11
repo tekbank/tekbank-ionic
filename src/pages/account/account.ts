@@ -7,6 +7,11 @@ import * as fromRoot from '../../app/reducers';
 import * as accounts from './../../app/actions/account.action';
 import { Account, AccountsSummary, TransactionFilter, Transaction } from "../../app/models/index";
 
+interface TransactionSummary {
+  date: Date;
+  transactions: Transaction[];
+}
+
 @IonicPage()
 @Component({
   selector: 'page-account',
@@ -17,6 +22,7 @@ export class AccountPage {
   accountId: string;
   account$: Observable<Account>;
   transactions$: Observable<Transaction[]>;
+  transactionsSummary$: Observable<TransactionSummary[]>;
 
   constructor(
     public navCtrl: NavController,
@@ -31,9 +37,9 @@ export class AccountPage {
     console.log('ionViewDidLoad Account:', this.accountId);
     this.store.dispatch(new accounts.LoadAccountAction(this.accountId));
 
-    let filter = {startDate: new Date(), endDate: new Date(), accountId: this.accountId  } as TransactionFilter;
+    let filter = { startDate: new Date(), endDate: new Date(), accountId: this.accountId } as TransactionFilter;
     this.store.dispatch(new accounts.LoadTransactionListAction(filter));
-
+    console.log('asdf');
   }
 
 }
