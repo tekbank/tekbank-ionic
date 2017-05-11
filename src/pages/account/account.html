@@ -29,4 +29,7 @@
         </ion-row>
       </ion-card-content>
   </ion-card>
+  <ion-card>
+    {{transactions$ | async | json}}
+  </ion-card>
 </ion-content>

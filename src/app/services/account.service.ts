@@ -1,9 +1,50 @@
-import { AccountsSummary } from './../models';
+import { AccountsSummary, TransactionStatus, TransactionFilter, Transaction } from './../models';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AccountService {
+
+    initialTransactions(): Transaction[] {
+        return [
+            {
+                userId: '', transactionId: 't1234',
+                accountId: '1111-1111-1111-1111',
+                transactionDateTime: '2017-01-04',
+                reference: 'tref1', description: 'desc',
+                debitAmount: { amount: 4500, currency: 'AUD' },
+                creditAmount: null,
+                status: TransactionStatus.Pending
+            },
+            {
+                userId: '', transactionId: 't1234',
+                accountId: '1111-1111-1111-1111',
+                transactionDateTime: '2017-01-04',
+                reference: 'tref2', description: 'desc',
+                debitAmount: { amount: 4500, currency: 'AUD' },
+                creditAmount: null,
+                status: TransactionStatus.Pending
+            },
+            {
+                userId: '', transactionId: 't1234',
+                accountId: '1111-1111-1111-1111',
+                transactionDateTime: '2017-01-04',
+                reference: 'tref3', description: 'desc',
+                debitAmount: { amount: 4500, currency: 'AUD' },
+                creditAmount: null,
+                status: TransactionStatus.Pending
+            },
+            {
+                userId: '', transactionId: 't1234',
+                accountId: '1111-1111-1111-1111',
+                transactionDateTime: '2017-01-04',
+                reference: 'tref4', description: 'desc',
+                debitAmount: { amount: 4500, currency: 'AUD' },
+                creditAmount: null,
+                status: TransactionStatus.Pending
+            },
+        ]
+    }
 
     intialAccounts() {
         return [
@@ -44,8 +85,8 @@ export class AccountService {
                 netPosition: { amount: 21000, currency: 'AUD' },
             } as AccountsSummary
         );
-
     };
+
     retrieveAccount(accountID: string): Observable<Account> {
         console.log('retrieve accounts');
         return Observable.of(
@@ -58,7 +99,12 @@ export class AccountService {
                 availableAmount: { amount: 3100, currency: 'AUD' }
             } as Account
         );
-
+    };
+    retrieveTransactions(filter: TransactionFilter): Observable<Transaction[]> {
+        console.log('retrieve transactions');
+        return Observable.of(
+            this.initialTransactions()
+        );
     };
 
 }

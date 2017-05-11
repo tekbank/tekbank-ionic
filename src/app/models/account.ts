@@ -31,11 +31,12 @@ export interface Transaction{
     status: TransactionStatus;
 }
 
-enum TransactionStatus {
+export enum TransactionStatus {
     Processed,
     Pending,
 }
 export interface TransactionFilter{
+    accountId: string;
     startDate:Date;
     endDate:Date;
 }

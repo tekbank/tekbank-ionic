@@ -27,6 +27,15 @@ export class AccountEffects {
         .map(data => new accountsSummary.LoadAccountSuccessAction(data));
     //.catch(() => of(new error.HandleErrorAction([]))); /i/TODO: Implement error handler
 
+    @Effect()
+    loadTransactions$: Observable<Action> = this.actions$
+        .ofType(accountsSummary.LOAD_TRANSACTION_LIST)
+        .do(() =>console.log('effect: load transaction list'))
+        .switchMap((action) => this.accountService.retrieveTransactions(action.payload))
+        .map(data => new accountsSummary.LoadTransactionListSuccessAction(data));
+    //.catch(() => of(new error.HandleErrorAction([]))); /i/TODO: Implement error handler
+
+
     constructor(
         private actions$: Actions,
         private accountService: AccountService) { }
