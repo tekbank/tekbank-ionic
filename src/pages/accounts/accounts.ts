@@ -28,7 +28,6 @@ export class Accounts {
     this.store.dispatch(new accounts.LoadAccountListAction())
   }
   presentPopover() {
-    console.log('show popover');
     let popover = this.popoverCtrl.create('AccountsPopover',{},{} as PopoverOptions);
     popover.present();
   }

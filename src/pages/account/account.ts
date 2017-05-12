@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs/Observable";
@@ -27,12 +27,16 @@ export class AccountPage {
   constructor(
     public navCtrl: NavController,
     private store: Store<fromRoot.State>,
-    private navParams: NavParams) {
+    private navParams: NavParams,
+    public popoverCtrl: PopoverController) {
     this.account$ = this.store.select(fromRoot.getAccount);
     this.transactions$ = this.store.select(fromRoot.getTransactions);
     this.accountId = navParams.get('accountId');
   }
-
+  presentPopover() {
+    let popover = this.popoverCtrl.create('AccountsPopover', {});
+    popover.present();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Account:', this.accountId);
     this.store.dispatch(new accounts.LoadAccountAction(this.accountId));
