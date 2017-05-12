@@ -10,17 +10,17 @@
 <ion-content padding *ngIf="accountsSummary$ | async as accountsSummary">
 
   <div *ngFor="let account of accountsSummary.accounts">
-    <ion-card (click)="goToAccountDetail(account.accountId)">
+    <ion-card>
       <ion-item>
-        <ion-avatar item-left>
+        <ion-avatar item-left  (click)="goToAccountDetail(account.accountId)">
           <ion-icon name="card"></ion-icon>
         </ion-avatar>
-        <ion-icon name="more" item-right></ion-icon>
-        <h2> {{account.accountName}}</h2>
-        <p> {{account.accountNumber}}</p>
+        <ion-icon name="more" (click)="presentPopover($event)" item-right></ion-icon>
+        <h2  (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h2>
+        <p  (click)="goToAccountDetail(account.accountId)"> {{account.accountNumber}}</p>
       </ion-item>
 
-      <ion-card-content>
+      <ion-card-content (click)="goToAccountDetail(account.accountId)">
         <ion-row>
           <ion-col col-1></ion-col>
           <ion-col>Available funds</ion-col>

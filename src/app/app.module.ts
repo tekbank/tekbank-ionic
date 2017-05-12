@@ -44,7 +44,7 @@ import { CurrencyPipe } from '@angular/common';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
   ],
   exports: [
     

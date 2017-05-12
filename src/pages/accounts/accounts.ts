@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, PopoverOptions } from 'ionic-angular';
 
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs/Observable";
@@ -18,7 +18,8 @@ export class Accounts {
 
   constructor(
     public navCtrl: NavController,
-    private store: Store<fromRoot.State>) {
+    private store: Store<fromRoot.State>,
+    public popoverCtrl: PopoverController) {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
   }
 
@@ -26,7 +27,11 @@ export class Accounts {
     console.log('ionViewDidLoad Accounts');
     this.store.dispatch(new accounts.LoadAccountListAction())
   }
-
+  presentPopover() {
+    console.log('show popover');
+    let popover = this.popoverCtrl.create('AccountsPopover',{},{} as PopoverOptions);
+    popover.present();
+  }
   goToAccountDetail(accountId: string) {
     this.navCtrl.push('AccountPage', { accountId: accountId });
   }

@@ -8,6 +8,9 @@ import { SharedModule } from './../../app/shared/shared.module';
   declarations: [
     Accounts,
   ],
+  entryComponents: [
+    Accounts,
+  ],
   imports: [
     IonicPageModule.forChild(Accounts),
     AccountModule,
