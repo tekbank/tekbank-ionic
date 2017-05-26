@@ -1,59 +1,39 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>View Accounts</ion-title>
+    <ion-title>TekBank</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding *ngIf="accountsSummary$ | async as accountsSummary">
-  <ion-slides pager>
-    <ion-slide *ngFor="let account of accountsSummary.accounts">
-      <ion-card>
-        <ion-item>
-          <ion-avatar item-left (click)="goToAccountDetail(account.accountId)">
-            <ion-icon name="card"></ion-icon>
-          </ion-avatar>
-          <ion-icon name="more" (click)="presentPopover($event)" item-right></ion-icon>
-          <h2 (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h2>
-          <p (click)="goToAccountDetail(account.accountId)"> {{account.accountNumber}}</p>
-        </ion-item>
-
-        <ion-card-content (click)="goToAccountDetail(account.accountId)">
-          <ion-row>
-            <ion-col col-1></ion-col>
-            <ion-col>Available funds</ion-col>
-            <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col col-1></ion-col>
-            <ion-col>Account balance </ion-col>
-            <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-
-
-  </ion-slides>
-  <ion-card>
-    <ion-row>
-      <ion-col class="totals">
-        <h3>Total credits</h3>
-        <h2>{{accountsSummary.totalCredits| tkbcurrency}}</h2>
-      </ion-col>
-      <ion-col background-color="red">
-        <h3>Total debits</h3>
-        <h2>{{accountsSummary.totalDebits| tkbcurrency}}</h2>
-      </ion-col>
-    </ion-row>
-    <ion-row class="totals">
-      <ion-col>
-        <h3>Net Position</h3>
-        <h2>{{accountsSummary.netPosition| tkbcurrency}}</h2>
-      </ion-col>
-    </ion-row>
-  </ion-card>
-
+<ion-content>
+      <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true" padding>
+        <ion-slide *ngFor="let account of accountsSummary.accounts">
+          <h2>{{account.balanceAmount | tkbcurrency}}</h2>
+          <h4 (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h4>
+        </ion-slide>
+      </ion-slides>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button ion-button block clear>
+            Add Funds
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block clear>
+            Transfer Money
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button block clear>
+            See Activity
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
