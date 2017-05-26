@@ -8,33 +8,35 @@
 
 
 <ion-content padding *ngIf="accountsSummary$ | async as accountsSummary">
+  <ion-slides pager>
+    <ion-slide *ngFor="let account of accountsSummary.accounts">
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-left (click)="goToAccountDetail(account.accountId)">
+            <ion-icon name="card"></ion-icon>
+          </ion-avatar>
+          <ion-icon name="more" (click)="presentPopover($event)" item-right></ion-icon>
+          <h2 (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h2>
+          <p (click)="goToAccountDetail(account.accountId)"> {{account.accountNumber}}</p>
+        </ion-item>
 
-  <div *ngFor="let account of accountsSummary.accounts">
-    <ion-card>
-      <ion-item>
-        <ion-avatar item-left  (click)="goToAccountDetail(account.accountId)">
-          <ion-icon name="card"></ion-icon>
-        </ion-avatar>
-        <ion-icon name="more" (click)="presentPopover($event)" item-right></ion-icon>
-        <h2  (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h2>
-        <p  (click)="goToAccountDetail(account.accountId)"> {{account.accountNumber}}</p>
-      </ion-item>
+        <ion-card-content (click)="goToAccountDetail(account.accountId)">
+          <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col>Available funds</ion-col>
+            <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col>Account balance </ion-col>
+            <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
 
-      <ion-card-content (click)="goToAccountDetail(account.accountId)">
-        <ion-row>
-          <ion-col col-1></ion-col>
-          <ion-col>Available funds</ion-col>
-          <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-1></ion-col>
-          <ion-col>Account balance </ion-col>
-          <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
-  </div>
 
+  </ion-slides>
   <ion-card>
     <ion-row>
       <ion-col class="totals">
