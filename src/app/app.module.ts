@@ -23,12 +23,14 @@ import { EffectsModule } from "@ngrx/effects";
 //import { Accounts } from "../pages/accounts/accounts";
 import { AccountService } from './services/account.service';
 import { CurrencyPipe } from '@angular/common';
+import { TransferComponent } from './../components/transfer/transfer';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NavButtons,
+    TransferComponent,
     
   ],
   imports: [

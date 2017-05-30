@@ -11,32 +11,21 @@
       <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true">
         <ion-slide *ngFor="let account of accountsSummary.accounts">
           <div class="hold-area">
-          <h2><span class="amount">{{account.balanceAmount | tkbcurrency}}</span><span class="currency">{{account.balanceAmount.currency}}</span></h2>
-          <h4 (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h4>
+            <div class="currency-name">
+              <div class="balance-value">
+                <h2><span class="amount">{{account.balanceAmount | tkbcurrency}}</span></h2>
+              </div>
+              <div class="exchange-value">
+                <div class="exchange-type"><span class="currency">{{account.balanceAmount.currency}}</span></div>
+                <div class="exchange-flag"><ion-icon name="heart"></ion-icon></div>
+              </div>
+            </div>
+            <div class="account-name"><h4 (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h4></div>
+          
           </div>
         </ion-slide>
       </ion-slides>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <button ion-button block clear>
-            Add Funds
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button block clear>
-            Transfer Money
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button block clear>
-            See Activity
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-toolbar>
+
 </ion-footer>
