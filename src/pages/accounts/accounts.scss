@@ -27,6 +27,9 @@
 .toolbar-title {
     color: #fff;
     text-align:center;
+    .bar-button {
+        color: #fff;
+    }
 }
 
 h2 {
@@ -51,4 +54,18 @@ h4 {
    .exchange-type
     {
         font-size: 1.8rem;
+    }
+
+.swiper-pagination-bullet {
+background:transparent;
+border: 1px solid #fff !important;
+opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #fff;
+    }
+
+    .button {
+        background-color:rgba(0,0,0,0.8);
     }

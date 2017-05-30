@@ -9,26 +9,26 @@
 
 <ion-content>
   <form [formGroup]="loginForm" novalidate>
-    <ion-list>
-        <p ion-text color="danger" *ngIf="authMessage$ | async as authMessage" padding-left>{{authMessage}}</p>
-      <ion-item>
-        <ion-label stacked color="primary">Username</ion-label>
-        <ion-input type="text" formControlName="userName" spellcheck="false" autocapitalize="off">
-        </ion-input>
-      </ion-item>
+<ion-list>
+<p ion-text color="danger" *ngIf="authMessage$ | async as authMessage" padding-left>{{authMessage}}</p>
+  <ion-item>
+    <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+    <ion-input type="text"formControlName="userName" spellcheck="false" autocapitalize="off"></ion-input>
+  </ion-item>
       <p ion-text *ngIf="loginForm.get('userName').hasError('required') && loginForm.get('userName').touched" color="danger" padding-left>
         User Name is required
       </p>
-
-      <ion-item>
-        <ion-label stacked color="primary">Password</ion-label>
-        <ion-input type="text" formControlName="password" type="password">
-        </ion-input>
-      </ion-item>
+      
+  <ion-item>
+    <ion-label><ion-icon name="phone"></ion-icon></ion-label>
+    <ion-input type="text" formControlName="password" type="password"></ion-input>
+  </ion-item>
       <p ion-text *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" color="danger" padding-left>
         Password is required
       </p>
-    </ion-list>
+
+</ion-list>
+
 
     <div padding fxLayout="column" fxLayoutAlign="center center">
       <button ion-button padding (click)="login()" type="submit" block>Log in</button>
