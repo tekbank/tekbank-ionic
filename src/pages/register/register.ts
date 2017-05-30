@@ -1,5 +1,5 @@
 import { RegisterDetail } from './../../app/models/register';
-import { HomePage } from './../home/home';
+import { Accounts } from './../accounts/accounts';
 import { Subscription } from 'rxjs/Subscription';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -59,7 +59,7 @@ export class Register {
   checkLogin() {
     this.subscriptions.push(this.store.select(fromRoot.getAuthIsLoggedIn)
       .subscribe(isLoggedIn => {
-        if (isLoggedIn) { this.navCtrl.setRoot(HomePage) };
+        if (isLoggedIn) { this.navCtrl.setRoot(Accounts) };
       }));
   }
 

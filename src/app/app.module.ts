@@ -8,7 +8,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { Accounts } from '../pages/accounts/accounts';
+import { Login } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,17 +21,20 @@ import { AuthService } from './services/auth.service';
 import { reducer } from './reducers/index';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
-//import { Accounts } from "../pages/accounts/accounts";
 import { AccountService } from './services/account.service';
 import { CurrencyPipe } from '@angular/common';
+
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    Accounts,
+    Login,
     NavButtons,    
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FlexLayoutModule,
@@ -43,7 +47,8 @@ import { CurrencyPipe } from '@angular/common';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    Accounts,
+    Login,
   ],
   exports: [
     

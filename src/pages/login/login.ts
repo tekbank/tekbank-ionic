@@ -1,4 +1,4 @@
-import { HomePage } from './../home/home';
+import { Accounts } from './../accounts/accounts';
 import { LoginDetail } from './../../app/models/login';
 
 import { Component } from '@angular/core';
@@ -53,7 +53,7 @@ export class Login {
   subscribeToLogin() {
     this.subscriptions.push(this.store.select(fromRoot.getAuthIsLoggedIn)
       .subscribe(isLoggedIn => {
-        if (isLoggedIn) { this.navCtrl.setRoot(HomePage) };
+        if (isLoggedIn) { this.navCtrl.setRoot(Accounts) };
       }));
   }
 
