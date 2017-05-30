@@ -6,30 +6,19 @@
 
 <ion-content padding>
 
-  <ion-card *ngIf="account$ | async as account">
 
-    <ion-item>
-      <ion-avatar item-left>
-        <ion-icon name="card"></ion-icon>
-      </ion-avatar>
-      <ion-icon name="more" item-right  (click)="presentPopover($event)"></ion-icon>
-      <h2> {{account.accountName}}</h2>
-      <p> {{account.accountNumber}}</p>
-    </ion-item>
-    <ion-card-content>
-      <ion-row>
-        <ion-col col-1></ion-col>
-        <ion-col>Available funds</ion-col>
-        <ion-col>{{account.availableAmount | tkbcurrency}} </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-1></ion-col>
-        <ion-col>Account balance </ion-col>
-        <ion-col>{{account.balanceAmount | tkbcurrency}}</ion-col>
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
+          <div class="hold-area" *ngIf="account$ | async as account">
+            <div class="account-name"><h4> {{account.accountName}}</h4></div>
+            <div class="currency-name">
+              <div class="balance-value">
+                <h2><span class="amount">{{account.balanceAmount | tkbcurrency}}</span></h2>
+              </div>
+              <div class="exchange-value">
+                <div class="exchange-type"><span class="currency">AUD</span></div>
+                <div class="exchange-flag"><ion-icon name="heart"></ion-icon></div>
+              </div>
+            </div>
+          </div>
 
     <ion-row>
       <ion-col col-8></ion-col>
@@ -41,7 +30,7 @@
       </ion-col>
     </ion-row>
 
-
+  <div class="activity-list">
     <div *ngFor="let transaction of transactions$ | async">
       <ion-item-group>
         <ion-item-divider color="light">{{transaction.transactionDate | date:'shortDate'}}</ion-item-divider>
@@ -58,5 +47,5 @@
         </ion-item>
       </ion-item-group>
     </div>
-  </ion-card>
+  </div>
 </ion-content>
