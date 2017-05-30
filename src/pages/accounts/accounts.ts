@@ -1,4 +1,4 @@
-//import { TransferComponent } from './../../components/transfer/transfer';
+import { TransferComponent } from './../../components/transfer/transfer';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, PopoverOptions } from 'ionic-angular';
 
@@ -17,16 +17,16 @@ export class Accounts {
 
   accountsSummary$: Observable<AccountsSummary>;
 
-  //transfertab: any;
-  //activitytab: any;
+  transfertab: any;
+  activitytab: any;
 
   constructor(
     public navCtrl: NavController,
     private store: Store<fromRoot.State>,
     public popoverCtrl: PopoverController) {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
-    // this.transfertab = TransferComponent;
-    // this.activitytab = TransferComponent;
+     this.transfertab = TransferComponent;
+     this.activitytab = TransferComponent;
   }
 
   ionViewDidLoad() {

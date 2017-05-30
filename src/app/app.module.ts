@@ -47,6 +47,7 @@ import { TransferComponent } from './../components/transfer/transfer';
   entryComponents: [
     MyApp,
     HomePage,
+    TransferComponent,
   ],
   exports: [
     
