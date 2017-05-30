@@ -7,10 +7,13 @@
 </ion-header>
 
 <ion-content>
-      <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true" padding>
+  <div class="img-corner"></div>
+      <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true">
         <ion-slide *ngFor="let account of accountsSummary.accounts">
-          <h2>{{account.balanceAmount | tkbcurrency}}</h2>
+          <div class="hold-area">
+          <h2><span class="amount">{{account.balanceAmount | tkbcurrency}}</span><span class="currency">{{account.balanceAmount.currency}}</span></h2>
           <h4 (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h4>
+          </div>
         </ion-slide>
       </ion-slides>
 </ion-content>

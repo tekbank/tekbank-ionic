@@ -1,6 +1,57 @@
-page-accounts {
-
+.app-root{
+    background: #191654;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #43C6AC, #191654);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #43C6AC, #191654); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity:0.8;
 }
-.totals{
-    text-align: center;
+
+.app-root > *{
+    opacity: 1;
+}
+
+.content{
+    background:url(../assets/img/bg.svg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    color: #fff;
+}
+
+.header .toolbar-background {
+    background: transparent !important;
+    border: transparent !important;
+}
+
+.header-md::after {background: none;}
+
+.toolbar-title {
+    color: #fff;
+    text-align:center;
+}
+
+h2 {
+    font-weight:100;
+    font-size: 4.5rem;
+    margin-top: 0;
+    color: #fff;
+    span.currency
+    {
+        font-size: 1.6rem;
+        padding-bottom: 2.9rem;
+        display:inline-block;
+        background-image: url(../assets/img/flags.png);
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        background-size: 100%;
+    }
+}
+
+
+h4 {
+    font-weight: 300;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    opacity: 0.6;
+    margin-top: 1rem;
+    color: #fff;
 }
