@@ -8,7 +8,7 @@ export interface State {
 };
 
 const initialState: State = {
-    isLoggedIn: null,
+    isLoggedIn: true,
     message: null,
     user: null
 };

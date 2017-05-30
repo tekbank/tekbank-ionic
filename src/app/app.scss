@@ -14,3 +14,23 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+ html{
+     background: #fff;
+ }
+ .content{
+    background: #474576;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #69d0bd, #474576);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #69d0bd, #474576); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+
+.gradient-lines{
+    background:url(../assets/img/bg.svg) transparent;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    color: #fff;
+    height: 100%;
+}

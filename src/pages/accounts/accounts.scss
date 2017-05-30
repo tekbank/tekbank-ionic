@@ -1,21 +1,4 @@
-.app-root{
-    background: #191654;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #43C6AC, #191654);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #43C6AC, #191654); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    opacity:0.8;
-}
 
-.app-root > *{
-    opacity: 1;
-}
-
-.content{
-    background:url(../assets/img/bg.svg);
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    background-size: 75%;
-    color: #fff;
-}
 
 .header .toolbar-background {
     background: transparent !important;
@@ -67,9 +50,32 @@ opacity: 1;
     }
 
     .button {
-        background-color:rgba(0,0,0,0.8);
+        background-color:rgba(0,0,0,0.6);
     }
 
     .ios .ion-page.show-page ~ .nav-decor {
         background: transparent !important;
     }
+
+.footer .toolbar {
+    padding: 0;
+.button{
+background: none;
+color: #333;
+padding: 0;
+margin: 0;
+.button-inner {
+    display:inline-block;
+
+}
+.icon{
+    display: block;
+}
+.tab-text{
+    display: block;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+}
+
+}

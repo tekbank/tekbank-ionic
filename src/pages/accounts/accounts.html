@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="img-corner"></div>
+   <div class="gradient-lines">
       <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true">
         <ion-slide *ngFor="let account of accountsSummary.accounts">
           <div class="hold-area">
@@ -25,17 +25,21 @@
           </div>
         </ion-slide>
       </ion-slides>
+      </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <button ion-button (click)="gotoAddMoney()">
-        Add Money
+      <ion-icon name="heart"></ion-icon>
+        <span class="tab-text">Add Money</span>
     </button>
     <button ion-button (click)="gotoTransferFunds()">
-        Transfer Funds
+      <ion-icon name="heart"></ion-icon>
+        <span class="tab-text">Transfer Funds</span>
     </button>
     <button ion-button (click)="goToAccountDetail(null)">
-        See Activity
+      <ion-icon name="heart"></ion-icon>
+        <span class="tab-text">See Activity</span>
     </button>
   </ion-toolbar>
 </ion-footer>
