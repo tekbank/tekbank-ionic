@@ -1,4 +1,3 @@
-//import { TransferComponentModule } from './../../components/transfer/transfer.module';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { Accounts } from './accounts';
@@ -16,7 +15,6 @@ import { SharedModule } from './../../app/shared/shared.module';
   ],
   imports: [
     IonicPageModule.forChild(Accounts),
-   // TransferComponentModule,
     AccountModule,
     SharedModule
   ],

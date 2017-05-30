@@ -28,13 +28,13 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <button ion-button>
+    <button ion-button (click)="gotoAddMoney()">
         Add Money
     </button>
-    <button ion-button>
+    <button ion-button (click)="gotoTransferFunds()">
         Transfer Funds
     </button>
-    <button ion-button>
+    <button ion-button (click)="goToAccountDetail(null)">
         See Activity
     </button>
   </ion-toolbar>
