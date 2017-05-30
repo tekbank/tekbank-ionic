@@ -15,12 +15,18 @@ import { AccountsSummary } from "../../app/models/index";
 export class Accounts {
 
   accountsSummary$: Observable<AccountsSummary>;
+  isLoggedIn$: Observable<boolean>;
 
   constructor(
     public navCtrl: NavController,
     private store: Store<fromRoot.State>,
     public popoverCtrl: PopoverController) {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
+    this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
+  }
+  
+  ionViewCanEnter() {
+    return this.isLoggedIn$;
   }
 
   ionViewDidLoad() {

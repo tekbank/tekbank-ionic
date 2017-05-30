@@ -1,4 +1,3 @@
-import { HomePage } from './../../pages/home/home';
 import { NavController } from 'ionic-angular';
 import { AccountService } from './../services/account.service';
 import { Action } from '@ngrx/store';

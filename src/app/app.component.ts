@@ -5,7 +5,8 @@ import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { Accounts } from '../pages/accounts/accounts';
+import { Login } from '../pages/login/login';
 
 import * as fromRoot from '../app/reducers';
 import * as auth from './../app/actions/auth.action';
@@ -19,7 +20,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   subscriptions = [] as Subscription[];
   isLoggedIn$: Observable<boolean>;
-  rootPage: any = HomePage;
+  rootPage: any = Login;
   pages: Array<{ title: string, component: any }>;
 
   constructor(
@@ -42,10 +43,14 @@ export class MyApp {
       this.checkLogin();
     });
   }
+  ionViewWillLoad() {
+    console.log('AppComponent:ionViewWillLoad.isLoggedIn ', this.isLoggedIn$);
 
+  }
   openPage(page: string) {
     //HomePage is not lazy loaded therefore component must be specified
-    page === 'Home' ? this.nav.setRoot(HomePage) : this.nav.setRoot(page);
+    page === 'Accounts' ? this.nav.setRoot(Accounts) : this.nav.setRoot(page);
+    console.log('AppComponent:openPage ', page);
   }
 
   logOut() {
