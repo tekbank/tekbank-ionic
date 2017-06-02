@@ -6,4 +6,5 @@ export { Account, AccountsSummary, Transaction, TransactionFilter, TransactionSt
 export { Error } from './error';
 export { Amount } from './types';
 export { ValidationErrors } from './validationErrors';
+export { Country } from './country';
 

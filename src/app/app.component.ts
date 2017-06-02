@@ -12,7 +12,6 @@ import * as fromRoot from '../app/reducers';
 import * as auth from './../app/actions/auth.action';
 import { Subscription } from 'rxjs/Subscription';
 
-
 @Component({
   templateUrl: 'app.html'
 })
