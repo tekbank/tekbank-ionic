@@ -54,6 +54,7 @@ export class MyApp {
 
   logOut() {
     this.store.dispatch(new auth.LogoffAction());
+    this.nav.setRoot(Login);
   }
 
   checkLogin() {
