@@ -1,17 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
+
 
 <ion-content>
-  <form [formGroup]="loginForm" novalidate fxFlexFill fxLayoutAlign="center center" fxLayoutWrap="false">
+  <form [formGroup]="loginForm" novalidate>
     <div>
       <div class="logo" padding>
-        <img src="./../../assets/img/logo.svg" />
+        <br />
+        <br />
+        <br />
       </div>
       <ion-list>
         <p ion-text color="danger" *ngIf="authMessage$ | async as authMessage" padding-left>{{authMessage}}</p>
@@ -38,7 +33,7 @@
       </ion-list>
 
 
-      <div padding fxLayout="column" fxLayoutAlign="center center">
+      <div padding>
         <button ion-button padding (click)="login()" type="submit" block>Log in</button>
         <div>
           <p>

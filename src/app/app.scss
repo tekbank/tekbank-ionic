@@ -36,6 +36,13 @@
     height: 100%;
 }
 
+.logo{
+  background:url(../assets/img/logo.svg) transparent;
+  background-size:contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
 .flag-icon-background {
   background-size: contain;
   background-position: 50%;
