@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>CurrencySelector</ion-title>
+    <ion-title>Select Currency</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -15,12 +15,12 @@
 <ion-list>
   <ion-item *ngFor="let currency of currencies">
         
-    <div class="exchange-value">
-      <div class="exchange-flag" (click)="selectCurrency(currency)">
+    <div class="exchange-value" (click)="selectCurrency(currency)">
+      <span padding class="select-flag">
         <span class="flag-icon flag-icon-{{currency.code | tkbcurrencycodetoiso}}"></span>
-      </div>
-      <div class="exchange-type" (click)="selectCurrency(currency)"><span>{{currency.code}}</span></div>
-      <div class="exchange-type" (click)="selectCurrency(currency)"><span>{{currency.name}}</span></div>
+      </span>
+      <span padding class="select-code"><span>{{currency.code}}</span></span>
+      <span padding class="select-name"><span>{{currency.name}}</span></span>
     </div>
 
   </ion-item>
