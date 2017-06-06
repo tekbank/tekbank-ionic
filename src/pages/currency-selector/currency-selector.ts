@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angular';
+import { CurrencyService } from '../../app/services/currency.service';
+import { Currency } from "../../app/models/index";
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../app/reducers';
+import * as accounts from './../../app/actions/account.action';
 
 /**
  * Generated class for the CurrencySelectorPage page.
@@ -15,42 +20,46 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class CurrencySelectorPage {
 
   searchQuery: string = '';
-  items: string[];
+  currencies: Currency[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeItems();
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController,
+  public navParams: NavParams, 
+  private currencyService: CurrencyService,
+    private store: Store<fromRoot.State>,
+  ) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CurrencySelectorPage');
+    this.getCurrencies("");
   }
-
-  initializeItems() {
-    this.items = [
-      'Amsterdam',
-      'Bogota',
-    ];
+  selectCurrency(currency:Currency){
+    console.log('currency selected', currency);
+    this.store.dispatch(new accounts.UpdateNewAccountCurrencyAction(currency));
+    this.viewCtrl.dismiss();
   }
+  getCurrencies(ev: any) {
+    if (!ev) ev = {target: {value:""}};
 
-  getItems(ev: any) {
-  
-
-
-
-//     this.result = this.field.valueChanges
-//     .debounce(500)
-// .distinctUntilChanged()
-// .switchMap((searchText:string) => currencyService.search(searchText))
     // set val to the value of the searchbar
-    let val = ev.target.value;
+    var val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      let searchString = val.trim().toLowerCase();
+      this.currencies = this.currencyService.getCurrencies().filter((item) => {
+        return (
+          item.code.toLowerCase().indexOf(searchString) > -1 ||
+          item.name.toLowerCase().indexOf(searchString) > -1
+          );
       })
     }
+    else {
+      this.currencies = this.currencyService.getCurrencies();
+    }
+
+
   }
 
 }

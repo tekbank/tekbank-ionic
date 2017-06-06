@@ -33,10 +33,7 @@ export class Accounts {
     this.buildForm();
   }
 
-  presentModal() {
-    let modal = this.modalCtrl.create(CurrencySelectorPage);
-    modal.present();
-  }
+ 
   ionViewCanEnter() {
     return this.isLoggedIn$;
   }
@@ -55,8 +52,8 @@ export class Accounts {
 
   }
   selectCurrency() {
-    let popover = this.popoverCtrl.create('CurrencySelectorPage', {}, {} as PopoverOptions);
-    popover.present();
+    let modal = this.modalCtrl.create('CurrencySelectorPage', {});
+    modal.present();
   }
   goToAccountDetail(accountId: string) {
     this.navCtrl.push('AccountPage', { accountId: accountId });

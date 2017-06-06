@@ -14,7 +14,7 @@ export class CurrencyService {
         ]
     }
 
-    getAllCurrencies() {
+    getCurrencies() {
         return [
             { code: "AUD", name: "Australian Dollar" },
             { code: "BGN", name: "Bulgarian Lev" },

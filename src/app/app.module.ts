@@ -23,7 +23,6 @@ import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { AccountService } from './services/account.service';
 import { CurrencyPipe } from '@angular/common';
-
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -31,7 +30,7 @@ import { SharedModule } from './shared/shared.module';
     MyApp,
     Accounts,
     Login,
-    NavButtons,    
+    NavButtons,  
   ],
   imports: [
     SharedModule,

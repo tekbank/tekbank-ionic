@@ -9,11 +9,11 @@ import { CurrencySelectorPageModule } from './../../pages/currency-selector/curr
 @NgModule({
   declarations: [
     Accounts,
-    
+    CurrencySelectorPageModule,
   ],
   entryComponents: [
     Accounts,
-    
+    CurrencySelectorPageModule,
   ],
   imports: [
     IonicPageModule.forChild(Accounts),

@@ -44,7 +44,7 @@
               </span>
               <div class="exchange-value">
                 <div class="exchange-flag" float-left click="selectCurrency()">
-                  <span class="flag-icon flag-icon-au"></span>
+                  <span class="flag-icon flag-icon-{{newAccountCurrency.code | tkbcurrencycodetoiso}}"></span>
                 </div>
               </div>
               <button float-right ion-button (click)="selectCurrency()">Change</button>
