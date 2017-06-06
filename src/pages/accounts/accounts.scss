@@ -98,3 +98,16 @@ box-shadow:none;
 .fixed-content, .scroll-content {
     margin-bottom: 8rem !important;
 }
+
+
+ion-input>span {
+     background-color: red;
+     width:auto;
+     border: solid 1px red;
+}
+
+ion-input>input {
+     background-color: green;
+     width:45%;
+     border: solid 1px green;
+}

@@ -15,3 +15,7 @@ export interface Address {
     postalCode:string;
     countryCode: string;
 }
+export interface Currency {
+    code: string;
+    name: string;
+}

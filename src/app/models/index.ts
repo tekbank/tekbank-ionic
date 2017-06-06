@@ -4,7 +4,7 @@ export { LoginDetail, LoginResult } from './login';
 export { RegisterDetail, RegisterResult } from './register';
 export { Account, AccountsSummary, Transaction, TransactionFilter, TransactionStatus } from './account';
 export { Error } from './error';
-export { Amount } from './types';
+export { Address, Amount, Currency, PhoneNumber } from './types';
 export { ValidationErrors } from './validationErrors';
 export { Country } from './country';
 

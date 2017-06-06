@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from "rxjs/Observable";
 import * as fromRoot from '../../app/reducers';
 import * as accounts from './../../app/actions/account.action';
-import { AccountsSummary } from "../../app/models/index";
+import { AccountsSummary, Currency } from "../../app/models/index";
 import { CurrencySelectorPage } from '../currency-selector/currency-selector';
 
 @IonicPage()
@@ -19,6 +19,7 @@ export class Accounts {
   accountsSummary$: Observable<AccountsSummary>;
   isLoggedIn$: Observable<boolean>;
   newAccountForm: FormGroup;
+  newAccountCurrency$: Observable<Currency>;
 
   constructor(
     public navCtrl: NavController,
@@ -28,6 +29,7 @@ export class Accounts {
     public modalCtrl: ModalController) {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
+    this.newAccountCurrency$ = this.store.select(fromRoot.getNewAccountCurrency);
     this.buildForm();
   }
 

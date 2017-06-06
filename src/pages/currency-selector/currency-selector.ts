@@ -34,9 +34,14 @@ export class CurrencySelectorPage {
   }
 
   getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeItems();
+  
 
+
+
+//     this.result = this.field.valueChanges
+//     .debounce(500)
+// .distinctUntilChanged()
+// .switchMap((searchText:string) => currencyService.search(searchText))
     // set val to the value of the searchbar
     let val = ev.target.value;
 
