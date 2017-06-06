@@ -4,14 +4,14 @@ import { TkbCountryCurrencyCodeToIsoCodePipe } from '../../pipes/tkb-iso-country
 
 @NgModule({
   declarations: [
-    TkbCurrencyPipe,  
-    TkbCountryCurrencyCodeToIsoCodePipe 
+    TkbCurrencyPipe,
+    TkbCountryCurrencyCodeToIsoCodePipe,
   ],
   imports: [
   ],
   exports: [
     TkbCurrencyPipe,
     TkbCountryCurrencyCodeToIsoCodePipe,
-  ]
+  ],
 })
-export class SharedModule {}
+export class SharedModule { }

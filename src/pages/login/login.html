@@ -14,7 +14,7 @@
           <ion-label>
             <ion-icon name="mail"></ion-icon>
           </ion-label>
-          <ion-input type="text" formControlName="userName" spellcheck="false" autocapitalize="off"></ion-input>
+          <ion-input type="text" formControlName="userName" spellcheck="false" autocapitalize="off" placeholder="Email address" ></ion-input>
         </ion-item>
         <p ion-text *ngIf="loginForm.get('userName').hasError('required') && loginForm.get('userName').touched" color="danger" padding-left>
           User Name is required
@@ -22,9 +22,9 @@
 
         <ion-item>
           <ion-label>
-            <ion-icon name="call"></ion-icon>
+            <ion-icon name="lock"></ion-icon>
           </ion-label>
-          <ion-input type="text" formControlName="password" type="password"></ion-input>
+          <ion-input type="text" formControlName="password" type="password" placeholder="TekBank password" ></ion-input>
         </ion-item>
         <p ion-text *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched" color="danger" padding-left>
           Password is required

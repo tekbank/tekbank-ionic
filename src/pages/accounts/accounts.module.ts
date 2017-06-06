@@ -3,6 +3,8 @@ import { IonicPageModule } from 'ionic-angular';
 import { Accounts } from './accounts';
 import { AccountModule } from '../account/account.module';
 import { SharedModule } from './../../app/shared/shared.module';
+import { CurrencySelectorPageModule } from './../../pages/currency-selector/currency-selector.module';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { SharedModule } from './../../app/shared/shared.module';
   imports: [
     IonicPageModule.forChild(Accounts),
     AccountModule,
-    SharedModule
+    SharedModule,
+    CurrencySelectorPageModule
   ],
   exports: [
     Accounts

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, PopoverOptions } from 'ionic-angular';
-
+import { NgForm, FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { ModalController } from 'ionic-angular';
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs/Observable";
 import * as fromRoot from '../../app/reducers';
 import * as accounts from './../../app/actions/account.action';
 import { AccountsSummary } from "../../app/models/index";
+import { CurrencySelectorPage } from '../currency-selector/currency-selector';
 
 @IonicPage()
 @Component({
@@ -16,15 +18,23 @@ export class Accounts {
 
   accountsSummary$: Observable<AccountsSummary>;
   isLoggedIn$: Observable<boolean>;
+  newAccountForm: FormGroup;
 
   constructor(
     public navCtrl: NavController,
     private store: Store<fromRoot.State>,
-    public popoverCtrl: PopoverController) {
+    public popoverCtrl: PopoverController,
+    private fb: FormBuilder,
+    public modalCtrl: ModalController) {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
+    this.buildForm();
   }
-  
+
+  presentModal() {
+    let modal = this.modalCtrl.create(CurrencySelectorPage);
+    modal.present();
+  }
   ionViewCanEnter() {
     return this.isLoggedIn$;
   }
@@ -33,8 +43,17 @@ export class Accounts {
     console.log('ionViewDidLoad Accounts');
     this.store.dispatch(new accounts.LoadAccountListAction())
   }
-  presentPopover() {
-    let popover = this.popoverCtrl.create('AccountsPopover', {}, {} as PopoverOptions);
+  buildForm() {
+    this.newAccountForm = this.fb.group({
+      accountName: ['', Validators.required],
+      currency: ['', Validators.required],
+    });
+  }
+  createAccount() {
+
+  }
+  selectCurrency() {
+    let popover = this.popoverCtrl.create('CurrencySelectorPage', {}, {} as PopoverOptions);
     popover.present();
   }
   goToAccountDetail(accountId: string) {
