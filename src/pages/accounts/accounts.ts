@@ -20,6 +20,8 @@ export class Accounts {
   isLoggedIn$: Observable<boolean>;
   newAccountForm: FormGroup;
   newAccountCurrency$: Observable<Currency>;
+  newAccountCurrency: Currency;
+  subscriptions = [] as Subscription[];
 
   constructor(
     public navCtrl: NavController,
@@ -30,10 +32,11 @@ export class Accounts {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
     this.newAccountCurrency$ = this.store.select(fromRoot.getNewAccountCurrency);
+
     this.buildForm();
   }
 
- 
+
   ionViewCanEnter() {
     return this.isLoggedIn$;
   }
@@ -41,15 +44,29 @@ export class Accounts {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Accounts');
     this.store.dispatch(new accounts.LoadAccountListAction())
+    this.subscriptions.push(this.newAccountCurrency$.subscribe(
+      currency => this.newAccountCurrency = currency
+    ));
+
   }
   buildForm() {
     this.newAccountForm = this.fb.group({
-      accountName: ['', Validators.required],
-      currency: ['', Validators.required],
+      accountName: ['', Validators.required]
     });
   }
-  createAccount() {
 
+  createAccount() {
+    let formaccountname = this.newAccountForm.value.accountName;
+    let account = {
+      accountId: "",
+      accountNumber: "0000-0000",
+      accountName: formaccountname,
+      balanceAmount: { amount: 0, currency: this.newAccountCurrency.code },
+      creditAmount: { amount: 0, currency: this.newAccountCurrency.code },
+      debitAmount: { currency: this.newAccountCurrency },
+      availableAmount: { amount: 0, currency: this.newAccountCurrency.code },
+    } as Account;
+    this.store.dispatch(new accounts.AddAccountAction(account))
   }
   selectCurrency() {
     let modal = this.modalCtrl.create('CurrencySelectorPage', {});
@@ -64,5 +81,8 @@ export class Accounts {
 
   gotoTransferFunds() {
     this.navCtrl.push('TransferFundsPage');
+  }
+  ionViewWillUnload() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 }
