@@ -52,6 +52,10 @@ export class MyApp {
     console.log('AppComponent:openPage ', page);
   }
 
+  gotoNewAccountPage() {
+    this.nav.push('NewAccountPage');
+  }
+  
   logOut() {
     this.store.dispatch(new auth.LogoffAction());
     this.nav.setRoot(Login);

@@ -1,16 +1,21 @@
 <!--<ion-menu [content]="content" *ngIf="isLoggedIn$ | async" >-->
-<ion-menu [content]="content" id="mainSideMenu" >
+<ion-menu [content]="content" id="mainSideMenu">
   <ion-header>
     <ion-toolbar>
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <ion-list >
-      <button menuClose ion-item  (click)="openPage('Home')">Home</button>
-      <button menuClose ion-item  (click)="logOut()">Log Off</button>
+    <ion-list>
+      <button menuClose ion-item (click)="openPage('Home')">Home</button>
+      <button menuClose ion-item (click)="gotoNewAccountPage()">New Account</button>
+      <button menuClose ion-item (click)="logOut()">Log Off</button>
     </ion-list>
+
   </ion-content>
+  <ion-footer padding>
+    <div class="version">Version 0.1.4</div>
+  </ion-footer>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

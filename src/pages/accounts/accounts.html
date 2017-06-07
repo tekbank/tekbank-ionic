@@ -6,7 +6,7 @@
     <ion-title>TekBank</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content no-bounce>
   <div class="gradient-lines">
     <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true">
       <ion-slide *ngFor="let account of accountsSummary.accounts">

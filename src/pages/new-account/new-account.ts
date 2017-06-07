@@ -12,12 +12,10 @@ import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
-  selector: 'page-accounts',
-  templateUrl: 'accounts.html',
+  selector: 'page-new-account',
+  templateUrl: 'new-account.html',
 })
-export class Accounts {
-
-  accountsSummary$: Observable<AccountsSummary>;
+export class NewAccountPage {
   isLoggedIn$: Observable<boolean>;
   newAccountForm: FormGroup;
   newAccountCurrency$: Observable<Currency>;
@@ -30,21 +28,19 @@ export class Accounts {
     public popoverCtrl: PopoverController,
     private fb: FormBuilder,
     public modalCtrl: ModalController) {
-    this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
     this.newAccountCurrency$ = this.store.select(fromRoot.getNewAccountCurrency);
 
     this.buildForm();
   }
 
-
   ionViewCanEnter() {
     return this.isLoggedIn$;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Accounts');
-    this.store.dispatch(new accounts.LoadAccountListAction())
+    console.log('ionViewDidLoad NewAccountPage');
+    
     this.subscriptions.push(this.newAccountCurrency$.subscribe(
       currency => this.newAccountCurrency = currency
     ));
@@ -68,21 +64,14 @@ export class Accounts {
       availableAmount: { amount: 0, currency: this.newAccountCurrency.code },
     } as Account;
     this.store.dispatch(new accounts.AddAccountAction(account))
+    this.navCtrl.pop();
+
   }
   selectCurrency() {
     let modal = this.modalCtrl.create('CurrencySelectorPage', {});
     modal.present();
   }
-  goToAccountDetail(accountId: string) {
-    this.navCtrl.push('AccountPage', { accountId: accountId });
-  }
-  gotoAddMoney() {
-    this.navCtrl.push('AddMoneyPage');
-  }
-
-  gotoTransferFunds() {
-    this.navCtrl.push('TransferFundsPage');
-  }
+  
   ionViewWillUnload() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
