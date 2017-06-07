@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content no-bounce>
   <div class="gradient-lines">
-    <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true">
+    <ion-slides *ngIf="accountsSummary$ | async as accountsSummary" pager="true" (ionSlideDidChange)="slideChanged()">
       <ion-slide *ngFor="let account of accountsSummary.accounts">
         <div class="hold-area">
           <div class="currency-name">

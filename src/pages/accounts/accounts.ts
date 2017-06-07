@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, PopoverOptions } from 'ionic-angular';
 import { NgForm, FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { ModalController } from 'ionic-angular';
@@ -9,6 +9,7 @@ import * as accounts from './../../app/actions/account.action';
 import { AccountsSummary, Currency } from "../../app/models/index";
 import { CurrencySelectorPage } from '../currency-selector/currency-selector';
 import { Subscription } from 'rxjs/Subscription';
+import { Slides } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,8 +17,9 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: 'accounts.html',
 })
 export class Accounts {
-
+  @ViewChild(Slides) slides: Slides;
   accountsSummary$: Observable<AccountsSummary>;
+  accountsSummary: AccountsSummary;
   isLoggedIn$: Observable<boolean>;
   newAccountForm: FormGroup;
   newAccountCurrency$: Observable<Currency>;
@@ -48,6 +50,13 @@ export class Accounts {
     this.subscriptions.push(this.newAccountCurrency$.subscribe(
       currency => this.newAccountCurrency = currency
     ));
+    this.subscriptions.push(this.accountsSummary$.subscribe(
+      (summary) => {
+        this.accountsSummary = summary;
+        this.setSelectedAccount();
+      }
+
+    ));
 
   }
   buildForm() {
@@ -55,7 +64,16 @@ export class Accounts {
       accountName: ['', Validators.required]
     });
   }
-
+  slideChanged() {
+    this.setSelectedAccount();
+  }
+  setSelectedAccount() {
+    let currentIndex = this.slides.getActiveIndex() || 0;    
+    let selectedAccount = this.accountsSummary.accounts[currentIndex];
+    if (selectedAccount==null) return;
+    this.store.dispatch(new accounts.SelectAccountAction(selectedAccount))
+    console.log('selected Account', selectedAccount);
+  }
   createAccount() {
     let formaccountname = this.newAccountForm.value.accountName;
     let account = {

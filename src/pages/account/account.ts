@@ -29,7 +29,7 @@ export class AccountPage {
     private store: Store<fromRoot.State>,
     private navParams: NavParams,
     public popoverCtrl: PopoverController) {
-    this.account$ = this.store.select(fromRoot.getAccount);
+    this.account$ = this.store.select(fromRoot.getCurrentAccount);
     this.transactions$ = this.store.select(fromRoot.getTransactions);
     this.accountId = navParams.get('accountId');
   }

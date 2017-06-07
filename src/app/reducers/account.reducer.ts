@@ -66,7 +66,7 @@ export function reducer(state = initialState, action: account.Actions): State {
                     newAccountCurrency: action.payload as Currency
                 };
         case account.ADD_ACCOUNT:
-            
+
             var newAccountSummary = {
                 accounts: [...state.accountsSummary.accounts, action.payload as Account],
                 totalCredits: state.accountsSummary.totalCredits,
@@ -82,13 +82,22 @@ export function reducer(state = initialState, action: account.Actions): State {
                     transactionFilter: state.transactionFilter,
                     newAccountCurrency: state.newAccountCurrency
                 };
+        case account.SELECT_ACCOUNT:
+            return state =
+                {
+                    accountsSummary: state.accountsSummary,
+                    currentAccount: action.payload as Account,
+                    currentTransactions: state.currentTransactions,
+                    transactionFilter: state.transactionFilter,
+                    newAccountCurrency: state.newAccountCurrency
+                };
         default:
             return state;
     }
 }
 
 export const getAccountsSummary = (state: State) => state.accountsSummary;
-export const getAccount = (state: State) => state.currentAccount;
+export const getCurrentAccount = (state: State) => state.currentAccount;
 export const getTransactions = (state: State) => state.currentTransactions;
 export const getNewAccountCurrency = (state: State) => state.newAccountCurrency;
 
