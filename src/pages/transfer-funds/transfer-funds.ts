@@ -46,6 +46,9 @@ export class TransferFundsPage {
   }
   
 
+  gotoNewAccountPage() {
+    this.navCtrl.push('NewAccountPage');
+  }
   ionViewWillUnload() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
