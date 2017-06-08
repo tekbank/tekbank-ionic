@@ -1,3 +1,61 @@
 page-transfer-funds {
 
 }
+.scroll-content {
+     margin-bottom: 0rem !important; 
+}
+
+.transferfunds{
+    background-color: #ffffff;
+}
+.select-method {
+    background-color: #31435C;
+    color:white;
+    line-height: 1em;
+    margin: 0px;
+}
+
+.select-method-to {
+    padding-top: 30px;
+    padding-left:40px;
+    padding-bottom: 10px;
+}
+
+.select-method-account {
+    background-color: white;
+    color: #999999;
+    padding: 10px;
+    margin-left:30px;
+    display: inline-block;
+    position: relative;
+}
+
+.select-method-payee {
+
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    
+}
+.select-account{
+    background-color: white;
+    height: 100%;
+    margin: 0px;
+}
+
+.select-account-name {
+    color: #000;
+}
+.select-account-amount {
+    color: #333;
+}
+.select-account-currency {
+    color: #666;
+}
+
+.new-account {
+    padding-left: 30px;
+    padding-top: 10px;
+    color: #333;
+}
+
