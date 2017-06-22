@@ -8,11 +8,13 @@
   <div class="account-selection">
     <div *ngIf="currentAccount$ | async as fromAccount" padding>
       <div class="account-name">
-        <h4 (click)="goToAccountDetail(fromAccount.accountId)">FROM {{fromAccount.accountName}}</h4>
+        <h4>FROM {{fromAccount.accountName}}</h4>
       </div>
       <div class="currency-name">
         <div class="balance-value">
-          <h2><span class="amount">{{fromAccount.balanceAmount | tkbcurrency}}</span></h2>
+          <span class="amount" style="font-size: 5rem; font-weight:100;">{{fromAccount.balanceAmount | tkbcurrencysymbol}}
+          <ion-input type="number" style="font-size: 5rem; font-weight:100;" placeholder="0.00" spellcheck="false"></ion-input>
+          </span>
         </div>
         <div class="exchange-value">
           <div class="exchange-type"><span class="currency">{{fromAccount.balanceAmount.currency}}</span></div>
@@ -27,11 +29,13 @@
   <div class="account-selection">
     <div *ngIf="currentAccount$ | async as fromAccount" padding>
       <div class="account-name">
-        <h4 (click)="goToAccountDetail(fromAccount.accountId)">TO {{fromAccount.accountName}}</h4>
+        <h4>TO {{fromAccount.accountName}}</h4>
       </div>
       <div class="currency-name">
         <div class="balance-value">
-          <h2><span class="amount">{{fromAccount.balanceAmount | tkbcurrency}}</span></h2>
+          <span class="amount" style="font-size: 5rem; font-weight:100;">{{fromAccount.balanceAmount | tkbcurrencysymbol}}
+          <ion-input type="number" style="font-size: 5rem; font-weight:100;" placeholder="0.00" spellcheck="false"></ion-input>
+          </span>
         </div>
         <div class="exchange-value">
           <div class="exchange-type"><span class="currency">{{fromAccount.balanceAmount.currency}}</span></div>
