@@ -21,52 +21,26 @@ const initialState: State = {
 export function reducer(state = initialState, action: account.Actions): State {
     switch (action.type) {
         case account.LOAD_ACCOUNT_SUCCESS:
-            return state =
-                {
-                    accountsSummary: state.accountsSummary,
-                    currentAccount: action.payload as Account,
-                    currentTransactions: state.currentTransactions,
-                    transactionFilter: state.transactionFilter,
-                    newAccountCurrency: state.newAccountCurrency
+            return { ...state,
+                    currentAccount: action.payload as Account
                 };
         case account.LOAD_ACCOUNT_LIST_SUCCESS:
-            return state =
-                {
+            return { ...state,
                     accountsSummary: action.payload as AccountsSummary,
-                    currentAccount: state.currentAccount,
-                    currentTransactions: state.currentTransactions,
-                    transactionFilter: state.transactionFilter,
-                    newAccountCurrency: state.newAccountCurrency
                 };
         case account.LOAD_TRANSACTION_LIST:
-            return state =
-                {
-                    accountsSummary: state.accountsSummary,
-                    currentAccount: state.currentAccount,
+            return { ...state,
                     currentTransactions: null,
-                    transactionFilter: action.payload as TransactionFilter,
-                    newAccountCurrency: state.newAccountCurrency
                 };
         case account.LOAD_TRANSACTION_LIST_SUCCESS:
-            return state =
-                {
-                    accountsSummary: state.accountsSummary,
-                    currentAccount: state.currentAccount,
+            return { ...state,
                     currentTransactions: action.payload as Transaction[],
-                    transactionFilter: state.transactionFilter,
-                    newAccountCurrency: state.newAccountCurrency
                 };
         case account.UPDATE_NEW_ACCOUNT_CURRENCY:
-            return state =
-                {
-                    accountsSummary: state.accountsSummary,
-                    currentAccount: state.currentAccount,
-                    currentTransactions: state.currentTransactions,
-                    transactionFilter: state.transactionFilter,
+            return {...state,
                     newAccountCurrency: action.payload as Currency
                 };
         case account.ADD_ACCOUNT:
-
             var newAccountSummary = {
                 accounts: [...state.accountsSummary.accounts, action.payload as Account],
                 totalCredits: state.accountsSummary.totalCredits,
@@ -74,22 +48,12 @@ export function reducer(state = initialState, action: account.Actions): State {
                 netPosition: state.accountsSummary.netPosition,
             }
 
-            return state =
-                {
+            return {...state,
                     accountsSummary: newAccountSummary,
-                    currentAccount: state.currentAccount,
-                    currentTransactions: state.currentTransactions,
-                    transactionFilter: state.transactionFilter,
-                    newAccountCurrency: state.newAccountCurrency
                 };
         case account.SELECT_ACCOUNT:
-            return state =
-                {
-                    accountsSummary: state.accountsSummary,
-                    currentAccount: action.payload as Account,
-                    currentTransactions: state.currentTransactions,
-                    transactionFilter: state.transactionFilter,
-                    newAccountCurrency: state.newAccountCurrency
+            return {...state,
+                    currentAccount: action.payload as Account
                 };
         default:
             return state;
