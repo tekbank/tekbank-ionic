@@ -68,7 +68,7 @@ export class Accounts {
     this.setSelectedAccount();
   }
   setSelectedAccount() {
-    let currentIndex = this.slides.getActiveIndex() || 0;    
+    let currentIndex = this.slides.getActiveIndex() || 0;
     let selectedAccount = this.accountsSummary.accounts[currentIndex];
     if (selectedAccount==null) return;
     this.store.dispatch(new accounts.SelectAccountAction(selectedAccount))
@@ -98,8 +98,8 @@ export class Accounts {
     this.navCtrl.push('AddMoneyPage');
   }
 
-  gotoTransferFunds() {
-    this.navCtrl.push('TransferFundsPage');
+  gotoTransferAccounts() {
+    this.navCtrl.push('TransferAccountsPage');
   }
   ionViewWillUnload() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());

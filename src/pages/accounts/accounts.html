@@ -40,7 +40,7 @@
             </ion-item>
             <ion-item class="exchange-value" *ngIf="newAccountCurrency$ | async as newAccountCurrency">
               <span padding>
-                {{newAccountCurrency.name}} 
+                {{newAccountCurrency.name}}
               </span>
               <div class="exchange-value">
                 <div class="exchange-flag" float-left click="selectCurrency()">
@@ -64,7 +64,7 @@
       <ion-icon name="add"></ion-icon>
         <span class="tab-text">Add Money</span>
     </button>
-    <button ion-button (click)="gotoTransferFunds()">
+    <button ion-button (click)="gotoTransferAccounts()">
       <ion-icon name="move"></ion-icon>
         <span class="tab-text">Transfer Funds</span>
     </button>

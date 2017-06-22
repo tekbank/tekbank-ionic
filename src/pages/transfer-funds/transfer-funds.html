@@ -24,37 +24,27 @@
     </div>
   </div>
 
-  <div class="select-method">
-    <div class="select-method-to">TO</div>
-    <div class="select-method-account">ACCOUNT</div>
-    <div class="select-method-payee">PAYEE</div>
-  </div>
-
-
-  <div class="select-account" padding>
-    <div *ngIf="accountsSummary$ | async as accountsSummary">
-      <div class="account" padding *ngFor="let account of accountsSummary.accounts">
-        <div class="account-name">
-          <h4 class="select-account-name" (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h4>
+  <div class="account-selection">
+    <div *ngIf="currentAccount$ | async as fromAccount" padding>
+      <div class="account-name">
+        <h4 (click)="goToAccountDetail(fromAccount.accountId)">TO {{fromAccount.accountName}}</h4>
+      </div>
+      <div class="currency-name">
+        <div class="balance-value">
+          <h2><span class="amount">{{fromAccount.balanceAmount | tkbcurrency}}</span></h2>
         </div>
-        <div class="currency-name">
-          <div class="balance-value">
-            <h2><span class="select-account-amount">{{account.balanceAmount | tkbcurrency}}</span></h2>
-          </div>
-          <div class="exchange-value">
-            <div class="exchange-type"><span class="select-account-currency">{{account.balanceAmount.currency}}</span></div>
-            <div class="exchange-flag">
-              <span class="flag-icon flag-icon-{{account.balanceAmount.currency | tkbcurrencycodetoiso}}"></span>
-            </div>
+        <div class="exchange-value">
+          <div class="exchange-type"><span class="currency">{{fromAccount.balanceAmount.currency}}</span></div>
+          <div class="exchange-flag">
+            <span class="flag-icon flag-icon-{{fromAccount.balanceAmount.currency | tkbcurrencycodetoiso}}"></span>
           </div>
         </div>
       </div>
     </div>
-    <div class="new-account">
-       <h3 class="new-account" (click)="gotoNewAccountPage()"> <ion-icon name="add-circle"></ion-icon>
-       NEW ACCOUNT
-       </h3>
-    </div>
+  </div>
+
+  <div class="select-account" padding>
+
   </div>
 
 </ion-content>
