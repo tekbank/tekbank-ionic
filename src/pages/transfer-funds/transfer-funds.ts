@@ -7,9 +7,11 @@ import { Observable } from "rxjs/Observable";
 import * as fromRoot from '../../app/reducers';
 import * as accounts from './../../app/actions/account.action';
 import * as currency from './../../app/actions/currency.action';
-import { AccountsSummary, Currency } from "../../app/models/index";
+import { Account, AccountsSummary, Currency } from "../../app/models/index";
 import { CurrencySelectorPage } from '../currency-selector/currency-selector';
 import { Subscription } from 'rxjs/Subscription';
+import { Subject } from "rxjs/Subject";
+import { CurrencyConversionRequest } from '../../app/models/currency';
 
 @IonicPage()
 @Component({
@@ -17,14 +19,15 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: 'transfer-funds.html',
 })
 export class TransferFundsPage {
+  unsubscribe$ = new Subject();
 
   accountsSummary$: Observable<AccountsSummary>;
   isLoggedIn$: Observable<boolean>;
   currentAccount$: Observable<Account>;
   currentAccount: Account;
- transferToAccount$: Observable<Account>;
+  transferToAccount$: Observable<Account>;
   transferToAccount: Account;
-   subscriptions = [] as Subscription[];
+
 
   constructor(
     public navCtrl: NavController,
@@ -42,14 +45,26 @@ export class TransferFundsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TransferFundsPage');
-    //this.store.dispatch(new currency.CONVERSION_RATE_LOAD())
-    this.subscriptions.push(this.currentAccount$.subscribe(
-      account => this.currentAccount = account
-    ));
 
-    this.subscriptions.push(this.transferToAccount$.subscribe(
+    this.currentAccount$
+      .takeUntil(this.unsubscribe$)
+      .subscribe(
+          account => this.currentAccount = account
+      )
+
+    this.transferToAccount$
+    .takeUntil(this.unsubscribe$)
+    .subscribe(
       account => this.transferToAccount = account
-    ));
+    );
+
+    let conversionRequest = {
+      from:this.currentAccount.currencyCode,
+      to:this.transferToAccount.currencyCode,
+    } as CurrencyConversionRequest;
+
+    console.log('conversion request', conversionRequest);
+    //this.store.dispatch(new currency.ConversionRateLoadAction(conversionRequest))
   }
 
 
@@ -57,6 +72,7 @@ export class TransferFundsPage {
     this.navCtrl.push('NewAccountPage');
   }
   ionViewWillUnload() {
-    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

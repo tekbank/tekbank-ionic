@@ -1,5 +1,6 @@
 import { AuthEffects } from './effects/auth.effects';
 import { AccountEffects } from './effects/account.effects';
+import { CurrencyEffects } from './effects/currency.effects';
 import './core/rxjs-extensions';
 
 import { NavButtons } from './../components/nav-buttons/nav-buttons';
@@ -24,13 +25,14 @@ import { EffectsModule } from "@ngrx/effects";
 import { AccountService } from './services/account.service';
 import { CurrencyPipe } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
+import { CurrencyService } from './services/currency.service';
 
 @NgModule({
   declarations: [
     MyApp,
     Accounts,
     Login,
-    NavButtons,  
+    NavButtons,
   ],
   imports: [
     SharedModule,
@@ -41,7 +43,8 @@ import { SharedModule } from './shared/shared.module';
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     EffectsModule.run(AuthEffects),
     EffectsModule.run(AccountEffects),
-    
+    EffectsModule.run(CurrencyEffects)
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +53,7 @@ import { SharedModule } from './shared/shared.module';
     Login,
   ],
   exports: [
-    
+
   ],
   providers: [
     StatusBar,
@@ -58,6 +61,7 @@ import { SharedModule } from './shared/shared.module';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthService,
     AccountService ,
+    CurrencyService,
     CurrencyPipe
   ]
 })
