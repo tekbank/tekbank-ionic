@@ -5,39 +5,53 @@ page-transfer-funds {
   }
 
   .transferfunds{
-      background-color: #ffffff;
+    background-color: #ffffff;
+
+    .account-name {
+      h4 {
+        display:inline-block;
+        text-align:middle;
+        margin:0;
+      }
+    }
+
+    .currency-details {
+      background-color:red;
+
+      .currency-symbol {
+        background-color:green;
+        display:inline-block;
+        font-size: 4rem;
+        font-weight:100;
+      }
+      .currency-value {
+        display:inline-block;
+        width:60%;
+        font-size: 4rem;
+        font-weight:100;
+      }
+      .exchange-value {
+          display:inline-block;
+      }
+      .exchange-type
+      {
+          font-size: 1.8rem;
+      }
+    }
   }
 
-  .balance-value, .exchange-value {
+
+  .exchange-rate-info {
+    background-color: #355A67;
+    h4 {
       display:inline-block;
-  }
-  .exchange-type
-  {
-      font-size: 1.8rem;
-  }
-
-  ion-input>span {
-      background-color: red;
-      width:auto;
-      border: solid 1px red;
+      text-align:middle;
+      margin:0;
+    }
+    .exchange-rate {
+      display:inline-block;
+    }
   }
 
-  ion-input>input {
-      background-color: green;
-      width:45%;
-      border: solid 1px green;
-  }
-  .exchange-info {
-    background-color: #355A67
-  }
-  .exchange-rate {
-    display:inline-block;
-  }
-
-  h4 {
-    display:inline-block;
-    text-align:middle;
-    margin:0;
-  }
 }
 
