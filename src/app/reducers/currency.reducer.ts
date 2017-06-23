@@ -25,4 +25,3 @@ export function reducer(state = initialState, action: currency.Actions): State {
 }
 
 export const getConversionRate = (state: State) => state.currentConversionRate;
-

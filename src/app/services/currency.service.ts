@@ -5,14 +5,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CurrencyService {
 
-  getCurrencyConversion(request: CurrencyConversionRequest) : CurrencyConversion {
+  getCurrencyConversion(request: CurrencyConversionRequest) : Observable< CurrencyConversion> {
     console.log('getCurrencyConversion: ', request);
-    return {
+    return Observable.of( {
       from: request.from,
       to: request.to,
       amount: 1.2345,
       timestamp: new Date()
-    } as CurrencyConversion;
+    } as CurrencyConversion );
   }
 
   getPopularCurrencies(): Currency[] {

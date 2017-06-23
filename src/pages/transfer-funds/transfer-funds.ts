@@ -11,7 +11,7 @@ import { Account, AccountsSummary, Currency } from "../../app/models/index";
 import { CurrencySelectorPage } from '../currency-selector/currency-selector';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from "rxjs/Subject";
-import { CurrencyConversionRequest } from '../../app/models/currency';
+import { CurrencyConversionRequest, CurrencyConversion } from '../../app/models/currency';
 
 
 @IonicPage()
@@ -28,6 +28,7 @@ export class TransferFundsPage {
   currentAccount: Account;
   transferToAccount$: Observable<Account>;
   transferToAccount: Account;
+  currencyConversion$: Observable<CurrencyConversion>;
 
 
   constructor(
@@ -37,6 +38,8 @@ export class TransferFundsPage {
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
     this.currentAccount$ = this.store.select(fromRoot.getCurrentAccount);
     this.transferToAccount$ = this.store.select(fromRoot.getTransferToAccount);
+    this.currencyConversion$ = this.store.select(fromRoot.getCurrencyConversion);
+
   }
 
 
@@ -59,13 +62,6 @@ export class TransferFundsPage {
       account => this.transferToAccount = account
       );
 
-    // let conversionRequest = {
-    //   from:this.currentAccount.currencyCode,
-    //   to:this.transferToAccount.currencyCode,
-    // } as CurrencyConversionRequest;
-
-    //console.log('conversion request', conversionRequest);
-
     Observable.combineLatest(
       this.currentAccount$,
       this.transferToAccount$,
@@ -73,10 +69,8 @@ export class TransferFundsPage {
         return { from: fromAccount.currencyCode, to: toAccount.currencyCode }
       }
     )
-      .subscribe(conversionRequest => {
-        console.log('eaaa', conversionRequest);
-        this.store.dispatch(new currency.ConversionRateLoadAction(conversionRequest));
-      }
+      .subscribe(conversionRequest =>
+        this.store.dispatch(new currency.ConversionRateLoadAction(conversionRequest))
       );
 
   }

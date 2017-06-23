@@ -14,8 +14,8 @@ export class CurrencyEffects {
   loadCurrencysSummary$: Observable<Action> = this.actions$
     .ofType(currency.CONVERSION_RATE_LOAD)
     .do(() => console.log('effect: load currency conversion'))
-    //.map(() =>  new currency.EmptyAction("rwar"));
-    .map(() => new currency.ConversionRateLoadSuccessAction(null));
+    .switchMap((action) =>  this.currencyService.getCurrencyConversion(action.payload))
+    .map((currencyConversion) => new currency.ConversionRateLoadSuccessAction(currencyConversion));
 
 //  @Effect()
 //     loadAccountsSummary$: Observable<Action> = this.actions$
