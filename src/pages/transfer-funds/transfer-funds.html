@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="transferfunds">
+<ion-content class="transferfunds"  no-bounce>
 
   <div class="account-selection">
     <div *ngIf="currentAccount$ | async as fromAccount" padding>
@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <div class="select-account" padding>
+  <div class="filler" padding>
 
   </div>
 
