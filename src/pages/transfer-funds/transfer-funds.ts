@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from "rxjs/Observable";
 import * as fromRoot from '../../app/reducers';
 import * as accounts from './../../app/actions/account.action';
+import * as currency from './../../app/actions/currency.action';
 import { AccountsSummary, Currency } from "../../app/models/index";
 import { CurrencySelectorPage } from '../currency-selector/currency-selector';
 import { Subscription } from 'rxjs/Subscription';
@@ -41,7 +42,7 @@ export class TransferFundsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TransferFundsPage');
-    this.store.dispatch(new accounts.LoadAccountListAction())
+    //this.store.dispatch(new currency.CONVERSION_RATE_LOAD())
     this.subscriptions.push(this.currentAccount$.subscribe(
       account => this.currentAccount = account
     ));

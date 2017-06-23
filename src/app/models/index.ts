@@ -7,4 +7,5 @@ export { Error } from './error';
 export { Address, Amount, Currency, PhoneNumber } from './types';
 export { ValidationErrors } from './validationErrors';
 export { Country } from './country';
+export { CurrencyConversionRequest, CurrencyConversion } from './currency'
 
