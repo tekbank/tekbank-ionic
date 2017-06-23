@@ -21,7 +21,9 @@ export class TransferFundsPage {
   isLoggedIn$: Observable<boolean>;
   currentAccount$: Observable<Account>;
   currentAccount: Account;
-  subscriptions = [] as Subscription[];
+ transferToAccount$: Observable<Account>;
+  transferToAccount: Account;
+   subscriptions = [] as Subscription[];
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +31,7 @@ export class TransferFundsPage {
     this.accountsSummary$ = this.store.select(fromRoot.getAccountsSummary);
     this.isLoggedIn$ = this.store.select(fromRoot.getAuthIsLoggedIn);
     this.currentAccount$ = this.store.select(fromRoot.getCurrentAccount);
+    this.transferToAccount$ = this.store.select(fromRoot.getTransferToAccount);
   }
 
 
@@ -43,8 +46,11 @@ export class TransferFundsPage {
       account => this.currentAccount = account
     ));
 
+    this.subscriptions.push(this.transferToAccount$.subscribe(
+      account => this.transferToAccount = account
+    ));
   }
-  
+
 
   gotoNewAccountPage() {
     this.navCtrl.push('NewAccountPage');

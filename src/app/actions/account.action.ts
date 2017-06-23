@@ -9,7 +9,8 @@ export const LOAD_TRANSACTION_LIST = '[Account] Load Transaction List';
 export const LOAD_TRANSACTION_LIST_SUCCESS = '[Account] Load Transaction List Success';
 export const UPDATE_NEW_ACCOUNT_CURRENCY = '[Account] Update New Account Currency'
 export const ADD_ACCOUNT = '[Account] Add Account'
-export const SELECT_ACCOUNT = '[Account] Select Account'
+export const SELECT_DEFAULT_ACCOUNT = '[Account] Select Default Account'
+export const SELECT_TRANSFER_TO_ACCOUNT = '[Account] Select Transfer To Account'
 
 export class LoadAccountListAction implements Action {
   readonly type = LOAD_ACCOUNT_LIST;
@@ -49,16 +50,21 @@ export class AddAccountAction implements Action {
   constructor(public payload: Account) { }
 }
 export class SelectAccountAction implements Action {
-  readonly type = SELECT_ACCOUNT;
+  readonly type = SELECT_DEFAULT_ACCOUNT;
+  constructor(public payload: Account) { }
+}
+export class SelectTransferToAccountAction implements Action {
+  readonly type = SELECT_TRANSFER_TO_ACCOUNT;
   constructor(public payload: Account) { }
 }
 export type Actions
-    = LoadAccountListAction  
-    | LoadAccountListSuccessAction
-    | LoadAccountAction  
-    | LoadAccountSuccessAction
-    | LoadTransactionListAction  
-    | LoadTransactionListSuccessAction
-    | UpdateNewAccountCurrencyAction
-    | AddAccountAction
-    | SelectAccountAction;
+  = LoadAccountListAction
+  | LoadAccountListSuccessAction
+  | LoadAccountAction
+  | LoadAccountSuccessAction
+  | LoadTransactionListAction
+  | LoadTransactionListSuccessAction
+  | UpdateNewAccountCurrencyAction
+  | AddAccountAction
+  | SelectAccountAction
+  | SelectTransferToAccountAction;

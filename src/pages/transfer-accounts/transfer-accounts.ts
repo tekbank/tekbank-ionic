@@ -44,7 +44,8 @@ export class TransferAccountsPage {
     ));
   }
 
-  gotoTransferFundsPage(id: number) {
+  gotoTransferFundsPage(account: Account) {
+    this.store.dispatch(new accounts.SelectTransferToAccountAction(account))
     this.navCtrl.push('TransferFundsPage');
   }
   gotoNewAccountPage() {

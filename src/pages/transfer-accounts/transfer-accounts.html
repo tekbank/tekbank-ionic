@@ -8,7 +8,7 @@
   <div class="account-selection">
     <div *ngIf="currentAccount$ | async as fromAccount" padding>
       <div class="account-name">
-        <h4 (click)="goToAccountDetail(fromAccount.accountId)">FROM {{fromAccount.accountName}}</h4>
+        <h4>FROM {{fromAccount.accountName}}</h4>
       </div>
       <div class="currency-name">
         <div class="balance-value">
@@ -33,10 +33,10 @@
 
   <div class="select-account" padding>
     <div *ngIf="accountsSummary$ | async as accountsSummary">
-      <div class="account" padding *ngFor="let account of accountsSummary.accounts" (click)="gotoTransferFundsPage(account.id)" >
+      <div class="account" padding *ngFor="let account of accountsSummary.accounts" (click)="gotoTransferFundsPage(account)" >
 
         <div class="account-name">
-          <h4 class="select-account-name" (click)="goToAccountDetail(account.accountId)"> {{account.accountName}}</h4>
+          <h4 class="select-account-name"> {{account.accountName}}</h4>
         </div>
         <div class="currency-name">
           <div class="balance-value">

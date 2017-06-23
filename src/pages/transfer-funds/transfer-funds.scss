@@ -1,10 +1,43 @@
 page-transfer-funds {
 
-}
-.scroll-content {
-     margin-bottom: 0rem !important;
+  .scroll-content {
+      margin-bottom: 0rem !important;
+  }
+
+  .transferfunds{
+      background-color: #ffffff;
+  }
+
+  .balance-value, .exchange-value {
+      display:inline-block;
+  }
+  .exchange-type
+  {
+      font-size: 1.8rem;
+  }
+
+  ion-input>span {
+      background-color: red;
+      width:auto;
+      border: solid 1px red;
+  }
+
+  ion-input>input {
+      background-color: green;
+      width:45%;
+      border: solid 1px green;
+  }
+  .exchange-info {
+    background-color: #355A67
+  }
+  .exchange-rate {
+    display:inline-block;
+  }
+
+  h4 {
+    display:inline-block;
+    text-align:middle;
+    margin:0;
+  }
 }
 
-.transferfunds{
-    background-color: #ffffff;
-}

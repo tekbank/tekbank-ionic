@@ -33,3 +33,6 @@ export const getAccountsSummary  = createSelector(getAccountsState, fromAccounts
 export const getCurrentAccount  = createSelector(getAccountsState, fromAccounts.getCurrentAccount);
 export const getTransactions = createSelector(getAccountsState, fromAccounts.getTransactions);
 export const getNewAccountCurrency = createSelector(getAccountsState, fromAccounts.getNewAccountCurrency);
+export const getTransferToAccount = createSelector(getAccountsState, fromAccounts.getTransferToAccount);
+
+
