@@ -1,3 +1,23 @@
 page-new-account {
 
+.account-currency-item {
+
+  ion-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+      .currency-name {
+        flex: 0 0 auto;
+        padding-right: 10px;
+      }
+      .exchange-value {
+        flex: 1 1 auto;
+      }
+      .change-currency-button {
+        flex: 0 0 auto;
+      }
+    }
+ }
+
 }
