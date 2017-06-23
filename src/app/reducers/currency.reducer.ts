@@ -13,6 +13,7 @@ const initialState: State = {
 export function reducer(state = initialState, action: currency.Actions): State {
   switch (action.type) {
     case currency.CONVERSION_RATE_LOAD_SUCCESS:
+      console.log('currency converstion rate load success');
       return {
         ...state,
         currentConversionRate: action.payload as CurrencyConversion

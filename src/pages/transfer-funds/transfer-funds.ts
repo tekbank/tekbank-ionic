@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Subject } from "rxjs/Subject";
 import { CurrencyConversionRequest } from '../../app/models/currency';
 
+
 @IonicPage()
 @Component({
   selector: 'page-transfer-funds',
@@ -49,22 +50,35 @@ export class TransferFundsPage {
     this.currentAccount$
       .takeUntil(this.unsubscribe$)
       .subscribe(
-          account => this.currentAccount = account
+      account => this.currentAccount = account
       )
 
     this.transferToAccount$
-    .takeUntil(this.unsubscribe$)
-    .subscribe(
+      .takeUntil(this.unsubscribe$)
+      .subscribe(
       account => this.transferToAccount = account
-    );
+      );
 
-    let conversionRequest = {
-      from:this.currentAccount.currencyCode,
-      to:this.transferToAccount.currencyCode,
-    } as CurrencyConversionRequest;
+    // let conversionRequest = {
+    //   from:this.currentAccount.currencyCode,
+    //   to:this.transferToAccount.currencyCode,
+    // } as CurrencyConversionRequest;
 
-    console.log('conversion request', conversionRequest);
-    //this.store.dispatch(new currency.ConversionRateLoadAction(conversionRequest))
+    //console.log('conversion request', conversionRequest);
+
+    Observable.combineLatest(
+      this.currentAccount$,
+      this.transferToAccount$,
+      (fromAccount: Account, toAccount: Account) => {
+        return { from: fromAccount.currencyCode, to: toAccount.currencyCode }
+      }
+    )
+      .subscribe(conversionRequest => {
+        console.log('eaaa', conversionRequest);
+        this.store.dispatch(new currency.ConversionRateLoadAction(conversionRequest));
+      }
+      );
+
   }
 
 

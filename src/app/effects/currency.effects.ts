@@ -14,9 +14,15 @@ export class CurrencyEffects {
   loadCurrencysSummary$: Observable<Action> = this.actions$
     .ofType(currency.CONVERSION_RATE_LOAD)
     .do(() => console.log('effect: load currency conversion'))
-    .do((action) => console.log('effect: load currency conversion,', action.payload))
-    //.switchMap((action) => this.currencyService.getCurrencyConversion(action.payload))
-    //.map(data => new currency.ConversionRateLoadSuccessAction(data));
+    //.map(() =>  new currency.EmptyAction("rwar"));
+    .map(() => new currency.ConversionRateLoadSuccessAction(null));
+
+//  @Effect()
+//     loadAccountsSummary$: Observable<Action> = this.actions$
+//         .ofType(accountsSummary.LOAD_ACCOUNT_LIST)
+//         .do(() =>console.log('effect: load account list'))
+//         .switchMap(() => this.accountService.retrieveAccountsSummary())
+//         .map(data => new accountsSummary.LoadAccountListSuccessAction(data));
 
   constructor(
     private actions$: Actions,
