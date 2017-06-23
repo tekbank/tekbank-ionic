@@ -47,11 +47,11 @@
     <h4>CURRENT RATE</h4>
     <div float-right class="exchange-rate">1
       <span  *ngIf="currentAccount$ | async as fromAccount" padding>
-        {{fromAccount.balanceAmount.currency}}
+        {{fromAccount.currencyCode}}
       </span>
       ->
       <span  *ngIf="transferToAccount$ | async as toAccount" padding>
-        {{toAccount.balanceAmount.currency}}
+        {{toAccount.currencyCode}}
       </span>
     </div>
   </div>
