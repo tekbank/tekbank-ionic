@@ -58,6 +58,7 @@ export function reducer(state = initialState, action: account.Actions): State {
         totalCredits: state.accountsSummary.totalCredits,
         totalDebits: state.accountsSummary.totalDebits,
         netPosition: state.accountsSummary.netPosition,
+        currencyCode: state.accountsSummary.currencyCode
       }
 
       return {

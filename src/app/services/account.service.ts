@@ -51,27 +51,30 @@ export class AccountService {
             {
                 accountId: '1111-1111-1111-1111',
                 accountNumber: '1234 4567 0980 2342', accountName: 'Basic Account',
-                creditAmount: { amount: 4500, currency: 'AUD' },
-                debitAmount: { amount: 1000, currency: 'AUD' },
-                balanceAmount: { amount: 3500, currency: 'AUD' },
-                availableAmount: { amount: 3100, currency: 'AUD' }
-            },
+                currencyCode: 'AUD',
+                creditAmount: 4500,
+                debitAmount: 1000,
+                balanceAmount: 3500,
+                availableAmount: 3100,
+              },
             {
                 accountId: '2222-2222-2222-2222',
                 accountNumber: '2345 4567 0980 2342', accountName: 'Super Saver (GBP)',
-                creditAmount: { amount: 22500, currency: 'GBP' },
-                debitAmount: { amount: 1000, currency: 'GBP' },
-                balanceAmount: { amount: 21500, currency: 'GBP' },
-                availableAmount: { amount: 21500, currency: 'GBP' }
+                currencyCode: 'GBP',
+                creditAmount: 22500,
+                debitAmount: 1000,
+                balanceAmount: 21500,
+                availableAmount: 21500,
             },
             {
                 accountId: '3333-3333-3333-3333',
                 accountNumber: '3456 4567 0980 2342', accountName: 'MasterCard Master',
-                creditAmount: { amount: 1000, currency: 'AUD' },
-                debitAmount: { amount: 5000, currency: 'AUD' },
-                balanceAmount: { amount: 5000, currency: 'AUD' },
-                availableAmount: { amount: 1500, currency: 'AUD' }
-            },
+                currencyCode: 'GBP',
+                creditAmount: 1000,
+                debitAmount: 5000,
+                balanceAmount: 5000,
+                availableAmount: 1500,
+               },
         ]
     }
 
@@ -80,9 +83,10 @@ export class AccountService {
         return Observable.of(
             {
                 accounts: this.intialAccounts(),
-                totalCredits: { amount: 28000, currency: 'AUD' },
-                totalDebits: { amount: 7000, currency: 'AUD' },
-                netPosition: { amount: 21000, currency: 'AUD' },
+                currencyCode: 'AUD',
+                totalCredits: 28000,
+                totalDebits: 7000,
+                netPosition: 21000,
             } as AccountsSummary
         );
     };
@@ -93,10 +97,11 @@ export class AccountService {
             {
                 accountId: '1234-1234-1234-1234',
                 accountNumber: '2345 4567 0980 2342', accountName: 'Super Saver',
-                creditAmount: { amount: 4500, currency: 'AUD' },
-                debitAmount: { amount: 1000, currency: 'AUD' },
-                balanceAmount: { amount: 3500, currency: 'AUD' },
-                availableAmount: { amount: 3100, currency: 'AUD' }
+                currencyCode:'AUD',
+                creditAmount: 4500,
+                debitAmount: 1000,
+                balanceAmount: 3500,
+                availableAmount: 3100,
             } as Account
         );
     };

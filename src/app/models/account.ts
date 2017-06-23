@@ -2,9 +2,10 @@ import { Amount } from './types';
 /// A summary of multiple acounts
 export interface AccountsSummary {
     accounts: Account[];
-    totalCredits: Amount;
-    totalDebits: Amount;
-    netPosition: Amount;
+    currencyCode: string;
+    totalCredits: number;
+    totalDebits: number;
+    netPosition: number;
 }
 
 
@@ -12,10 +13,12 @@ export interface Account {
     accountId: string;
     accountNumber: string;
     accountName: string;
-    creditAmount: Amount;
-    debitAmount: Amount;
-    balanceAmount: Amount;
-    availableAmount: Amount;
+    currencyCode: string;
+
+    creditAmount: number;
+    debitAmount: number;
+    balanceAmount: number;
+    availableAmount: number;
 }
 
 

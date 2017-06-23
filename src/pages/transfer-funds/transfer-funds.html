@@ -12,12 +12,12 @@
         <h4>FROM {{fromAccount.accountName}}</h4>
       </div>
       <div class="currency-details">
-        <span class="currency-symbol">{{fromAccount.balanceAmount | tkbcurrencysymbol}}</span>
+        <span class="currency-symbol">{{fromAccount.currencyCode | tkbcurrencysymbol}}</span>
         <ion-input class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
         <div class="exchange-value">
-          <div class="exchange-type"><span class="currency">{{fromAccount.balanceAmount.currency}}</span></div>
+          <div class="exchange-type"><span class="currency">{{fromAccount.currencyCode}}</span></div>
           <div class="exchange-flag">
-            <span class="flag-icon flag-icon-{{fromAccount.balanceAmount.currency | tkbcurrencycodetoiso}}"></span>
+            <span class="flag-icon flag-icon-{{fromAccount.currencyCode | tkbcurrencycodetoiso}}"></span>
           </div>
         </div>
       </div>
@@ -31,12 +31,12 @@
         <h4>TO {{toAccount.accountName}}</h4>
       </div>
       <div class="currency-details">
-        <span class="currency-symbol">{{toAccount.balanceAmount | tkbcurrencysymbol}}</span>
+        <span class="currency-symbol">{{toAccount.currencyCode | tkbcurrencysymbol}}</span>
         <ion-input class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
         <div class="exchange-value">
-          <div class="exchange-type"><span class="currency">{{toAccount.balanceAmount.currency}}</span></div>
+          <div class="exchange-type"><span class="currency">{{toAccount.currencyCode}}</span></div>
           <div class="exchange-flag">
-            <span class="flag-icon flag-icon-{{toAccount.balanceAmount.currency | tkbcurrencycodetoiso}}"></span>
+            <span class="flag-icon flag-icon-{{toAccount.currencyCode | tkbcurrencycodetoiso}}"></span>
           </div>
         </div>
       </div>

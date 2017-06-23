@@ -9,9 +9,9 @@ export class TkbCurrencySymbolPipe implements PipeTransform {
 
   constructor(private currencyPipe: CurrencyPipe) { }
 
-  transform(value: Amount, ...args): string {
-    if (value == null) return '';
-    let currencyString = this.currencyPipe.transform(1, value.currency, true);
+  transform(currencyCode: string): string {
+    if (currencyCode == null) return '';
+    let currencyString = this.currencyPipe.transform(1, currencyCode, true);
     var re = /(\d*)[.,](\d*)/;
     return currencyString.replace(re,"");
   }

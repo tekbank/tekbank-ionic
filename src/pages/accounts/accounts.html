@@ -13,12 +13,12 @@
         <div class="hold-area">
           <div class="currency-name">
             <div class="balance-value">
-              <h2><span class="amount">{{account.balanceAmount | tkbcurrency}}</span></h2>
+              <h2><span class="amount">{{account.balanceAmount | tkbcurrency: account.currencyCode}}</span></h2>
             </div>
             <div class="exchange-value">
-              <div class="exchange-type"><span class="currency">{{account.balanceAmount.currency}}</span></div>
+              <div class="exchange-type"><span class="currency">{{account.currencyCode}}</span></div>
               <div class="exchange-flag">
-                <span class="flag-icon flag-icon-{{account.balanceAmount.currency | tkbcurrencycodetoiso}}"></span>
+                <span class="flag-icon flag-icon-{{account.currencyCode | tkbcurrencycodetoiso}}"></span>
               </div>
             </div>
           </div>
