@@ -28,33 +28,6 @@
 
         </div>
       </ion-slide>
-      <ion-slide>
-        <form [formGroup]="newAccountForm" novalidate>
-          <div class="hold-area">
-            <ion-item>
-              <ion-input type="text" formControlName="accountName" spellcheck="false" autocapitalize="off" placeholder="Account Name"></ion-input>
-              <p ion-text *ngIf="newAccountForm.get('accountName').hasError('required') && newAccountForm.get('accountName').touched" color="danger"
-                padding-left>
-                Account Name is required
-              </p>
-            </ion-item>
-            <ion-item class="exchange-value" *ngIf="newAccountCurrency$ | async as newAccountCurrency">
-              <span padding>
-                {{newAccountCurrency.name}}
-              </span>
-              <div class="exchange-value">
-                <div class="exchange-flag" float-left click="selectCurrency()">
-                  <span class="flag-icon flag-icon-{{newAccountCurrency.code | tkbcurrencycodetoiso}}"></span>
-                </div>
-              </div>
-              <button float-right ion-button (click)="selectCurrency()">Change</button>
-            </ion-item>
-          </div>
-          <div padding>
-            <button ion-button padding (click)="createAccount()" type="submit" block>Create Account</button>
-          </div>
-        </form>
-      </ion-slide>
     </ion-slides>
   </div>
 </ion-content>

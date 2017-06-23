@@ -78,6 +78,16 @@
       color: #fff;
   }
 
+  .item {
+      background: transparent;
+      color: #fff;
+      padding-right: 16px;
+      border: 0 !important;
+          .item-inner{
+          padding-right: 0 !important;
+      }
+
+  }
 
   .footer .toolbar {
       padding: 0;
