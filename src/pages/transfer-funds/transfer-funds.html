@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="transferfunds">
+
   <div class="account-selection">
     <div *ngIf="currentAccount$ | async as fromAccount" padding>
       <div class="account-name">
@@ -23,14 +24,15 @@
     </div>
   </div>
 
+
   <div class="account-selection">
     <div *ngIf="transferToAccount$ | async as toAccount" padding>
       <div class="account-name">
         <h4>TO {{toAccount.accountName}}</h4>
       </div>
       <div class="currency-details">
-        <span class="amount" style="display:inline-block;font-size: 4rem; font-weight:100;">{{toAccount.balanceAmount | tkbcurrencysymbol}}</span>
-        <ion-input type="number" style="display:inline-block;width:60%;font-size: 4rem; font-weight:100;" placeholder="0.00" spellcheck="false"></ion-input>
+        <span class="currency-symbol">{{toAccount.balanceAmount | tkbcurrencysymbol}}</span>
+        <ion-input class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
         <div class="exchange-value">
           <div class="exchange-type"><span class="currency">{{toAccount.balanceAmount.currency}}</span></div>
           <div class="exchange-flag">
@@ -40,6 +42,7 @@
       </div>
     </div>
   </div>
+
   <div class="exchange-rate-info" padding>
     <h4>CURRENT RATE</h4>
     <div float-right class="exchange-rate">1

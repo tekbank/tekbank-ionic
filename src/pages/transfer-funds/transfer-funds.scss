@@ -16,22 +16,22 @@ page-transfer-funds {
     }
 
     .currency-details {
-      background-color:red;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
 
       .currency-symbol {
-        background-color:green;
-        display:inline-block;
+        flex:0 0 auto;
         font-size: 4rem;
         font-weight:100;
       }
       .currency-value {
-        display:inline-block;
-        width:60%;
+        flex:1 1 auto;
         font-size: 4rem;
         font-weight:100;
       }
       .exchange-value {
-          display:inline-block;
+          flex:0 0 auto
       }
       .exchange-type
       {
