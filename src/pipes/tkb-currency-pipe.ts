@@ -9,9 +9,10 @@ export class TkbCurrencyPipe implements PipeTransform {
 
   constructor(private currencyPipe: CurrencyPipe) { }
 
-  transform(value: number, ...args: string[]): string {
+  transform(value: number, ...args): string {
     if (value == null) return '';
-     var currencyCode = args[0] || "AUD";
+    console.log("tkbcurrency", ...args);
+    var currencyCode = args[0] || "AUD";
     return this.currencyPipe.transform(value, currencyCode, true);
   }
 }

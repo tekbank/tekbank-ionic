@@ -11,7 +11,7 @@
             <div class="account-name"><h4> {{account.accountName}}</h4></div>
             <div class="currency-name">
               <div class="balance-value">
-                <h2><span class="amount">{{account.balanceAmount | tkbcurrency}}</span></h2>
+                <h2><span class="amount">{{account.balanceAmount | tkbcurrency: account.currencyCode}}</span></h2>
               </div>
               <div class="exchange-value">
                 <div class="exchange-type"><span class="currency">AUD</span></div>
@@ -40,8 +40,8 @@
               <p>{{transaction.description}}</p>
             </ion-col>
             <ion-col col-4>
-              <p class="transaction" *ngIf="transaction.debitAmount">{{transaction.debitAmount | tkbcurrency}}</p>
-              <p class="transaction" *ngIf="transaction.creditAmount">{{transaction.creditAmount | tkbcurrency}}</p>
+              <p class="transaction" *ngIf="transaction.debitAmount">{{transaction.debitAmount | tkbcurrency: transaction.currencyCode}}</p>
+              <p class="transaction" *ngIf="transaction.creditAmount">{{transaction.creditAmount | tkbcurrency: transaction.currencyCode}}</p>
             </ion-col>
           </ion-row>
         </ion-item>

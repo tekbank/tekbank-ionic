@@ -12,7 +12,7 @@
       </div>
       <div class="currency-name">
         <div class="balance-value">
-          <h2><span class="amount">{{fromAccount.balanceAmount | tkbcurrency}}</span></h2>
+          <h2><span class="amount">{{fromAccount.balanceAmount | tkbcurrency: fromAccount.currencyCode}}</span></h2>
         </div>
         <div class="exchange-value">
           <div class="exchange-type"><span class="currency">{{fromAccount.currencyCode}}</span></div>

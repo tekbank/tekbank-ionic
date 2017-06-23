@@ -30,8 +30,9 @@ export interface Transaction{
     transactionDateTime: Date;
     reference: string;
     description: string;
-    debitAmount: Amount;
-    creditAmount: Amount;
+    currencyCode: string;
+    debitAmount: number;
+    creditAmount: number;
     status: TransactionStatus;
 }
 

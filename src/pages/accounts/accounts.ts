@@ -80,10 +80,11 @@ export class Accounts {
       accountId: "",
       accountNumber: "0000-0000",
       accountName: formaccountname,
-      balanceAmount: { amount: 0, currency: this.newAccountCurrency.code },
-      creditAmount: { amount: 0, currency: this.newAccountCurrency.code },
-      debitAmount: { currency: this.newAccountCurrency },
-      availableAmount: { amount: 0, currency: this.newAccountCurrency.code },
+      currencyCode: this.newAccountCurrency.code,
+      balanceAmount: 0,
+      creditAmount: 0,
+      debitAmount: 0,
+      availableAmount: 0,
     } as Account;
     this.store.dispatch(new accounts.AddAccountAction(account))
   }

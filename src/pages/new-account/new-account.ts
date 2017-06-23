@@ -40,7 +40,7 @@ export class NewAccountPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewAccountPage');
-    
+
     this.subscriptions.push(this.newAccountCurrency$.subscribe(
       currency => this.newAccountCurrency = currency
     ));
@@ -58,10 +58,11 @@ export class NewAccountPage {
       accountId: "",
       accountNumber: "0000-0000",
       accountName: formaccountname,
-      balanceAmount: { amount: 0, currency: this.newAccountCurrency.code },
-      creditAmount: { amount: 0, currency: this.newAccountCurrency.code },
-      debitAmount: { currency: this.newAccountCurrency },
-      availableAmount: { amount: 0, currency: this.newAccountCurrency.code },
+      currencyCode: this.newAccountCurrency.code,
+      balanceAmount: 0,
+      creditAmount: 0,
+      debitAmount: 0,
+      availableAmount: 0,
     } as Account;
     this.store.dispatch(new accounts.AddAccountAction(account))
     this.navCtrl.pop();
@@ -71,7 +72,7 @@ export class NewAccountPage {
     let modal = this.modalCtrl.create('CurrencySelectorPage', {});
     modal.present();
   }
-  
+
   ionViewWillUnload() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }

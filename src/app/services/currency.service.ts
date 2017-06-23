@@ -12,7 +12,7 @@ export class CurrencyService {
 
   getCurrencyConversion(request: CurrencyConversionRequest): Observable<CurrencyConversion> {
     console.log('getCurrencyConversion: ', request);
-    var rate =this.getCurrencyRate(request.from, request.to);
+    var rate = this.getCurrencyRate(request.from, request.to);
     return Observable.of({
       from: request.from,
       to: request.to,
@@ -26,13 +26,16 @@ export class CurrencyService {
     var currency: { [code: string]: ICur; } = {};
     currency["AUD"] = { rate: 1 };
     currency["USD"] = { rate: 0.75680 };
-    currency["EUR"] = { rate: 0.67775	 };
+    currency["EUR"] = { rate: 0.67775 };
     currency["GBP"] = { rate: 0.59450 };
+    currency[""] = { rate: 1 };
 
     var fromCurrency = currency[from];
     var toCurrency = currency[to];
-    console.log('rates', fromCurrency, toCurrency);
-    return Math.round( fromCurrency.rate / toCurrency.rate * 1000000) / 1000000;
+
+    if (toCurrency==null || fromCurrency==null) return 1;
+    var calculatedRate = Math.round(toCurrency.rate / fromCurrency.rate * 100000) / 100000;
+    return calculatedRate || 1;
 
   }
 
