@@ -2,17 +2,38 @@ import { Currency, CurrencyConversion, CurrencyConversionRequest } from './../mo
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
+interface ICur {
+
+  rate: number;
+}
+
 @Injectable()
 export class CurrencyService {
 
-  getCurrencyConversion(request: CurrencyConversionRequest) : Observable< CurrencyConversion> {
+  getCurrencyConversion(request: CurrencyConversionRequest): Observable<CurrencyConversion> {
     console.log('getCurrencyConversion: ', request);
-    return Observable.of( {
+    var rate =this.getCurrencyRate(request.from, request.to);
+    return Observable.of({
       from: request.from,
       to: request.to,
-      amount: 1.2345,
+      amount: rate,
       timestamp: new Date()
-    } as CurrencyConversion );
+    } as CurrencyConversion);
+  }
+
+  getCurrencyRate(from: string, to: string): number {
+    console.log('rates', from, to);
+    var currency: { [code: string]: ICur; } = {};
+    currency["AUD"] = { rate: 1 };
+    currency["USD"] = { rate: 0.75680 };
+    currency["EUR"] = { rate: 0.67775	 };
+    currency["GBP"] = { rate: 0.59450 };
+
+    var fromCurrency = currency[from];
+    var toCurrency = currency[to];
+    console.log('rates', fromCurrency, toCurrency);
+    return Math.round( fromCurrency.rate / toCurrency.rate * 1000000) / 1000000;
+
   }
 
   getPopularCurrencies(): Currency[] {
