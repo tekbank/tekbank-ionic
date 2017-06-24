@@ -69,10 +69,10 @@ export class TransferFundsPage {
     this.unsubscribe$.complete();
   }
   calculateToValue(fromValue: number): number {
-    return fromValue * this.currencyConversion.amount;
+    return Math.round(fromValue * this.currencyConversion.amount * 100) /100;
   }
   calculateFromValue(toValue: number): number {
-    return toValue / this.currencyConversion.amount ;
+    return Math.round(toValue / this.currencyConversion.amount * 100) / 100 ;
   }
   subscribeToAmountFieldChanges() {
     this.toAmountControl.valueChanges
