@@ -13,7 +13,7 @@
       </div>
       <div class="currency-details">
         <span class="currency-symbol">{{fromAccount.currencyCode | tkbcurrencysymbol}}</span>
-        <ion-input class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
+        <ion-input name="fromAmount" [formControl]="fromAmountControl"  class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
         <div class="exchange-value">
           <div class="exchange-type"><span class="currency">{{fromAccount.currencyCode}}</span></div>
           <div class="exchange-flag">
@@ -32,7 +32,7 @@
       </div>
       <div class="currency-details">
         <span class="currency-symbol">{{toAccount.currencyCode | tkbcurrencysymbol}}</span>
-        <ion-input class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
+        <ion-input  name="toAmount" [formControl]="toAmountControl" class="currency-value" type="number"  placeholder="0.00" spellcheck="false"></ion-input>
         <div class="exchange-value">
           <div class="exchange-type"><span class="currency">{{toAccount.currencyCode}}</span></div>
           <div class="exchange-flag">

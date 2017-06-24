@@ -13,7 +13,6 @@ import { CurrencySelectorPageModule } from './../../pages/currency-selector/curr
   ],
   entryComponents: [
     Accounts,
-    CurrencySelectorPageModule,
   ],
   imports: [
     IonicPageModule.forChild(Accounts),
